@@ -37,6 +37,7 @@ bool segment_segment_intersection(int x1, int y1,
     bool b1 = d1 > 0 and d2 < 0 or d1 < 0 and d2 > 0;
     bool b2 = d3 > 0 and d4 < 0 or d3 < 0 and d4 > 0;
     if (b1 and b2) return true;
+    /* point_in_box is on segment_segmet_intersection */
     if (d1 == 0 and point_in_box(x1, y1,     x3, y3, x4, y4))
         return true;
 

@@ -169,10 +169,11 @@ El coste de las aristas \underline{sí} puede ser negativo.
 \input{./src/grafos/puntos_articulacion}%.tex
 
 \subsection{Máximo flujo: Método de Ford-Fulkerson, algoritmo de Edmonds-Karp}
-\medskip
 El algoritmo de Edmonds-Karp es una modificación al método de Ford-Fulkerson. Este último
 utiliza DFS para hallar un camino de aumentación, pero la sugerencia de Edmonds-Karp
 es utilizar BFS que lo hace más eficiente en algunos grafos.
+\medskip
+
 \input{./src/grafos/ford_fulkerson}%.tex
 
 \section{Programación dinámica}
@@ -254,16 +255,35 @@ $ \displaystyle\bar{C}_{y} = \frac{1}{6A} \sum_{i=0}^{n-1} (y_{i} + y_{i+1}) (x_
 \input{./src/geometria/is_inside_convex_polygon}%.tex
 
 \subsection{Determinar si un punto está dentro de un polígono cualquiera}
-\large{\textbf{ADVERTENCIA:}} Código no probado.
+\small
+\textbf{Field-testing:} 
+\begin{itemize}
+\item \emph{TopCoder} -  SRM 187 - Division 2 Hard - PointInPolygon
+\end{itemize}
 \input{./src/geometria/is_inside_concave_polygon}%.tex
+
+%---------------------------------------------------------------
+\section{Estructuras de datos}
+\subsection{Árboles de Fenwick ó Binary indexed trees}
+
+Se tiene un arreglo $\{a_0, a_1, \cdots, a_{n-1}\}$. Los árboles
+de Fenwick permiten encontrar $ \displaystyle \sum_{k=i}^{j} a_k $ en orden $O(\log_{2}{n})$ para parejas de $(i, j)$ con $i \leq j$. De la misma manera, permiten sumarle una cantidad a un $a_i$ también en tiempo $O(log_{2}{n})$.
+\medskip
+\input{./src/estructuras/fenwick}%.tex
+
+\subsection{Segment tree}
+\input{./src/estructuras/segment_tree}%.tex
 
 %---------------------------------------------------------------
 \section{Misceláneo}
 \subsection{El \textit{parser} más rápido del mundo}
 \begin{itemize}
 \item Cada no-terminal: un método
-\item Cada lado derecho: invocar los métodos de los no-terminales o
+\item Cada lado derecho: 
+\begin{itemize}
+\item invocar los métodos de los no-terminales o
 \item Cada terminal: invocar proceso \textit{match}
+\end{itemize}
 \item Alternativas en una producción: se hace un \textit{if}
 \end{itemize}
 \medskip

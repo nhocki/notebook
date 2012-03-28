@@ -28,13 +28,16 @@
 \BOOKMARK [2][-]{subsection.5.7}{Determinar si un pol\355gono es convexo}{section.5}
 \BOOKMARK [2][-]{subsection.5.8}{Determinar si un punto est\341 dentro de un pol\355gono convexo}{section.5}
 \BOOKMARK [2][-]{subsection.5.9}{Determinar si un punto est\341 dentro de un pol\355gono cualquiera}{section.5}
-\BOOKMARK [1][-]{section.6}{Miscel\341neo}{}
-\BOOKMARK [2][-]{subsection.6.1}{El parser m\341s r\341pido del mundo}{section.6}
-\BOOKMARK [1][-]{section.7}{Java}{}
-\BOOKMARK [2][-]{subsection.7.1}{Entrada desde entrada est\341ndar}{section.7}
-\BOOKMARK [2][-]{subsection.7.2}{Entrada desde archivo}{section.7}
-\BOOKMARK [2][-]{subsection.7.3}{Mapas y sets}{section.7}
-\BOOKMARK [2][-]{subsection.7.4}{Colas de prioridad}{section.7}
-\BOOKMARK [1][-]{section.8}{C++}{}
-\BOOKMARK [2][-]{subsection.8.1}{Entrada desde archivo}{section.8}
-\BOOKMARK [2][-]{subsection.8.2}{Strings con caract\351res especiales}{section.8}
+\BOOKMARK [1][-]{section.6}{Estructuras de datos}{}
+\BOOKMARK [2][-]{subsection.6.1}{\301rboles de Fenwick \363 Binary indexed trees}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{Segment tree}{section.6}
+\BOOKMARK [1][-]{section.7}{Miscel\341neo}{}
+\BOOKMARK [2][-]{subsection.7.1}{El parser m\341s r\341pido del mundo}{section.7}
+\BOOKMARK [1][-]{section.8}{Java}{}
+\BOOKMARK [2][-]{subsection.8.1}{Entrada desde entrada est\341ndar}{section.8}
+\BOOKMARK [2][-]{subsection.8.2}{Entrada desde archivo}{section.8}
+\BOOKMARK [2][-]{subsection.8.3}{Mapas y sets}{section.8}
+\BOOKMARK [2][-]{subsection.8.4}{Colas de prioridad}{section.8}
+\BOOKMARK [1][-]{section.9}{C++}{}
+\BOOKMARK [2][-]{subsection.9.1}{Entrada desde archivo}{section.9}
+\BOOKMARK [2][-]{subsection.9.2}{Strings con caract\351res especiales}{section.9}

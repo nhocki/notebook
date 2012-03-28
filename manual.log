@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2009.1.25)  28 FEB 2009 07:59
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2009.1.25)  15 APR 2009 23:35
 entering extended mode
  %&-line parsing enabled.
 **manual.tex
@@ -419,187 +419,336 @@ Package hyperref Info: Link coloring OFF on input line 3122.
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
 \Fld@listcount=\count117
-) (./manual.aux)
+)
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count118
+\Gm@cntv=\count119
+\c@Gm@tempcnt=\count120
+\Gm@bindingoffset=\dimen120
+\Gm@wd@mp=\dimen121
+\Gm@odd@mp=\dimen122
+\Gm@even@mp=\dimen123
+\Gm@dimlist=\toks28
+)
+
+LaTeX Warning: Unused global option(s):
+    [twosided].
+
+(./manual.aux)
 \openout1 = `manual.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-Package hyperref Info: Link coloring OFF on input line 20.
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+Package hyperref Info: Link coloring OFF on input line 24.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
-\c@section@level=\count118
+\c@section@level=\count121
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
  (./manual.out)
 (./manual.out)
 \@outlinefile=\write3
 \openout3 = `manual.out'.
 
- (./manual.toc [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+-------------------- Geometry parameters
+paper: letterpaper
+landscape: true
+twocolumn: true
+twoside: --
+asymmetric: --
+h-parts: 56.9055pt, 681.15898pt, 56.9055pt
+v-parts: 56.9055pt, 500.484pt, 56.9055pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  794.96999pt
+\paperheight 614.295pt
+\textwidth  681.15898pt
+\textheight 500.484pt
+\oddsidemargin  -15.36449pt
+\evensidemargin -15.36449pt
+\topmargin  -52.36449pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 4.0pt
+\marginparsep   10.0pt
+\columnsep  18.06749pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twocolumntrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+(./manual.toc
+Underfull \hbox (badness 2035) in paragraph at lines 19--19
+ [][] [][]\OT1/cmr/m/n/10 M^^Saxi-mo flu-jo: M^^Seto-do de Ford-Fulkerson, al-g
+o-rit-mo de 
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+])
 \tf@toc=\write4
 \openout4 = `manual.toc'.
 
- (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-(./src/number_theory/bigmod.tex
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 8.
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 8.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 8.
+File: ./src/template.cpp  (verbatim)
 
+Overfull \hbox (4.45132pt too wide) in paragraph at lines 38--38
+[]\OT1/cmtt/m/n/10 #define foreach(x, v) for (typeof (v).begin() x = (v).begin(
+); \[] 
+ []
 
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 8.
+File: ./src/number_theory/bigmod.cpp  (verbatim)
+[2]
+File: ./src/number_theory/criba.cpp  (verbatim)
+File: ./src/number_theory/divisores.cpp  (verbatim)
 
-) (./src/number_theory/criba.tex [2]) (./src/number_theory/divisores.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+
+ []
+
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 101.
+(amsmath)                 on input line 103.
 
-(./src/combinatoria/pascal_triangle.tex [3]) (./src/grafos/dijkstra.tex
-[4]
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <7> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <5> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 30.
-) (./src/grafos/prim.tex [5]) (./src/grafos/kruskal.tex [6]
+File: ./src/combinatoria/pascal_triangle.cpp  (verbatim)
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
-LaTeX Font Warning: Font shape `OMS/cmtt/m/it' undefined
-(Font)              using `OMS/cmtt/m/n' instead
-(Font)              for symbol `textbackslash' on input line 54.
+ []
 
-[7]) (./src/grafos/floyd.tex) (./src/grafos/bellman.tex [8])
-(./src/grafos/puntos_articulacion.tex [9]) [10]
-(./src/grafos/ford_fulkerson.tex [11] [12]) (./src/dp/lcs.tex)
-(./src/dp/particion_troncos.tex [13] [14]) (./src/geometria/polygon_area.tex)
-[15] (./src/geometria/grahamscan.tex [16]) (./src/geometria/monotonechain.tex
-[17]) (./src/geometria/distance_point_to_segment.tex [18])
-(./src/geometria/distance_point_to_line.tex)
-(./src/geometria/is_convex_polygon.tex)
-(./src/geometria/is_inside_convex_polygon.tex [19])
-(./src/geometria/is_inside_concave_polygon.tex
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 12.
- [20])
-(./src/estructuras/fenwick.tex [21]) (./src/estructuras/segment_tree.tex
-[22])
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 284.
+File: ./src/grafos/dijkstra.cpp  (verbatim)
 
- (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+File: ./src/grafos/prim.cpp  (verbatim)
+File: ./src/grafos/kruskal.cpp  (verbatim)
+
+[5]
+File: ./src/grafos/floyd.cpp  (verbatim)
+File: ./src/grafos/bellman.cpp  (verbatim)
+ [6]
+File: ./src/grafos/puntos_articulacion.cpp  (verbatim)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1009) has occurred while \output is active []
+
+ [7]
+File: ./src/grafos/ford_fulkerson.cpp  (verbatim)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ./src/grafos/ford_fulkerson_sparse.cpp  (verbatim)
+ [9]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ./src/grafos/dinic.cpp  (verbatim)
+ [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: ./src/grafos/mincostmaxflow.cpp  (verbatim)
+ [11]
+File: ./src/grafos/tarjan.cpp  (verbatim)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+File: ./src/dp/lcs.cpp  (verbatim)
+File: ./src/dp/particion_troncos.cpp  (verbatim)
+
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+File: ./src/geometria/polygon_area.cpp  (verbatim)
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+File: ./src/geometria/grahamscan.cpp  (verbatim)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+File: ./src/geometria/monotonechain.cpp  (verbatim)
+
+Overfull \hbox (4.45132pt too wide) in paragraph at lines 262--262
+[]\OT1/cmtt/m/n/10 // counter-clockwise turn, negative for clockwise turn, and 
+zero[] 
+ []
+
+
+Overfull \hbox (4.45132pt too wide) in paragraph at lines 262--262
+[]\OT1/cmtt/m/n/10 CoordType cross(const Point &O, const Point &A, const Point 
+&B){[] 
+ []
+
+
+Overfull \hbox (9.70128pt too wide) in paragraph at lines 262--262
+[]\OT1/cmtt/m/n/10 // counter-clockwise order.  Note: the last point in the ret
+urned[] 
+ []
+
+File: ./src/geometria/distance_point_to_segment.cpp  (verbatim)
+
+Overfull \hbox (4.45132pt too wide) in paragraph at lines 265--265
+[]  \OT1/cmtt/m/n/10 Returns the closest distance between point pnt and the seg
+ment[] 
+ []
+
+[16]
+File: ./src/geometria/distance_point_to_line.cpp  (verbatim)
+File: ./src/geometria/is_convex_polygon.cpp  (verbatim)
+File: ./src/geometria/is_inside_convex_polygon.cpp  (verbatim)
+ [17]
+File: ./src/geometria/is_inside_concave_polygon.cpp  (verbatim)
+File: ./src/geometria/line_line_intersection.cpp  (verbatim)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+File: ./src/geometria/segment_segment_intersection.cpp  (verbatim)
+
+Underfull \vbox (badness 6876) has occurred while \output is active []
+
+ [19]
+File: ./src/estructuras/fenwick.cpp  (verbatim)
+File: ./src/estructuras/segment_tree.cpp  (verbatim)
+
+[20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 308.
+
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 284.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 308.
+ [21]
+File: ./src/misc/parser_recursivo_desc.cpp  (verbatim)
+File: ./src/java/io_estandar_easy.java  (verbatim)
+ [22]
+File: ./src/java/io_estandar.java  (verbatim)
+File: ./src/java/io_file.java  (verbatim)
+File: ./src/java/maps_sets.java  (verbatim)
  [23]
-(./src/misc/parser_recursivo_desc.tex) (./src/java/io_estandar_easy.tex
-[24]) (./src/java/io_estandar.tex [25]) (./src/java/io_file.tex)
-(./src/java/maps_sets.tex [26])
-Underfull \hbox (badness 10000) in paragraph at lines 337--337
+Underfull \hbox (badness 10000) in paragraph at lines 412--412
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--337
+Underfull \hbox (badness 10000) in paragraph at lines 412--412
 
  []
 
-(./src/java/priority_queue.tex [27])
-Underfull \hbox (badness 10000) in paragraph at lines 362--362
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
-(./src/c++/io_file.tex [28]) (./src/c++/unicode.tex [29]) (./src/c++/fgetws.tex
-) [30] (./manual.aux)
+File: ./src/java/priority_queue.java  (verbatim)
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+Underfull \hbox (badness 10000) in paragraph at lines 426--428
 
- )
-(\end occurred inside a group at level 32)
+ []
 
-### simple group (level 32) entered at line 3 ({)
-### simple group (level 31) entered at line 3 ({)
-### simple group (level 30) entered at line 3 ({)
-### simple group (level 29) entered at line 3 ({)
-### simple group (level 28) entered at line 3 ({)
-### simple group (level 27) entered at line 3 ({)
-### simple group (level 26) entered at line 3 ({)
-### simple group (level 25) entered at line 3 ({)
-### simple group (level 24) entered at line 3 ({)
-### simple group (level 23) entered at line 2 ({)
-### simple group (level 22) entered at line 3 ({)
-### simple group (level 21) entered at line 3 ({)
-### simple group (level 20) entered at line 3 ({)
-### simple group (level 19) entered at line 3 ({)
-### simple group (level 18) entered at line 3 ({)
-### simple group (level 17) entered at line 3 ({)
-### simple group (level 16) entered at line 3 ({)
-### simple group (level 15) entered at line 3 ({)
-### simple group (level 14) entered at line 3 ({)
-### simple group (level 13) entered at line 3 ({)
-### simple group (level 12) entered at line 3 ({)
-### simple group (level 11) entered at line 3 ({)
-### simple group (level 10) entered at line 3 ({)
-### simple group (level 9) entered at line 3 ({)
-### simple group (level 8) entered at line 3 ({)
-### simple group (level 7) entered at line 3 ({)
-### simple group (level 6) entered at line 3 ({)
-### simple group (level 5) entered at line 3 ({)
-### simple group (level 4) entered at line 3 ({)
-### simple group (level 3) entered at line 3 ({)
-### simple group (level 2) entered at line 3 ({)
-### simple group (level 1) entered at line 3 ({)
-### bottom level 
+
+Underfull \hbox (badness 10000) in paragraph at lines 437--437
+
+ []
+
+File: ./src/c++/io_file.cpp  (verbatim)
+
+Underfull \vbox (badness 4328) has occurred while \output is active []
+
+ [24]
+File: ./src/c++/unicode.cpp  (verbatim)
+File: ./src/c++/fgetws.cpp  (verbatim)
+
+[25] (./manual.aux) ) 
 Here is how much of TeX's memory you used:
- 5535 strings out of 95037
- 75203 string characters out of 1182324
- 142330 words of memory out of 1500000
- 8477 multiletter control sequences out of 10000+50000
- 12525 words of font info for 47 fonts, out of 1200000 for 2000
+ 5832 strings out of 95037
+ 79412 string characters out of 1182324
+ 151894 words of memory out of 1500000
+ 8825 multiletter control sequences out of 10000+50000
+ 11853 words of font info for 43 fonts, out of 1200000 for 2000
  54 hyphenation exceptions out of 8191
- 27i,8n,36p,933b,2574s stack positions out of 5000i,500n,6000p,200000b,5000s
-</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></u
-sr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf-texl
-ive/fonts/type1/bluesky/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1/blue
-sky/cm/cmbxti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex10.pfb
-></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmitt10.pfb></usr/share/texmf
--texlive/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type
-1/bluesky/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi9.p
-fb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf
--texlive/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1
-/bluesky/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb
-></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf-te
-xlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/b
-luesky/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy9.pfb>
-</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf-t
-exlive/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/b
-luesky/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt9.pfb
->
-Output written on manual.pdf (30 pages, 248670 bytes).
+ 27i,9n,36p,453b,545s stack positions out of 5000i,500n,6000p,200000b,5000s
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pf
+b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmbxti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmex1
+0.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/t
+exmf-texlive/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/t
+ype1/bluesky/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi
+9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr6.
+pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/
+bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy6.pf
+b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf-
+texlive/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/
+bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti9.pf
+b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1
+/public/cmex/fmex9.pfb>
+Output written on manual.pdf (25 pages, 251910 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 131072)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 494 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 131072)
+ 433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

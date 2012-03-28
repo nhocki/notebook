@@ -1,6 +1,3 @@
-#include <vector>
-using namespace std;
-
 class SegmentTree{
 public:
   vector<int> arr, tree;
@@ -28,11 +25,14 @@ public:
 
 private:
   int initialize(int node, int node_left, int node_right);
-  int query(int node, int node_left, int node_right, int query_left, int query_right) const;
-  void update(int node, int node_left, int node_right, int where, int what);
+  int query(int node, int node_left, int node_right,
+            int query_left, int query_right) const;
+  void update(int node, int node_left, int node_right,
+              int where, int what);
 };
 
-int SegmentTree::initialize(int node, int node_left, int node_right){
+int SegmentTree::initialize(int node,
+                            int node_left, int node_right){
   if (node_left == node_right){
     tree[node] = node_left;
     return tree[node];
@@ -49,13 +49,18 @@ int SegmentTree::initialize(int node, int node_left, int node_right){
   return tree[node];
 }
 
-int SegmentTree::query(int node, int node_left, int node_right, int query_left, int query_right) const{
-  if (node_right < query_left || query_right < node_left) return -1;
-  if (query_left <= node_left && node_right <= query_right) return tree[node];
+int SegmentTree::query(int node, int node_left, int node_right,
+                       int query_left, int query_right) const{
+  if (node_right < query_left || query_right < node_left)
+    return -1;
+  if (query_left <= node_left && node_right <= query_right)
+    return tree[node];
 
   int half = (node_left + node_right) / 2;
-  int ans_left = query(2*node+1, node_left, half, query_left, query_right);
-  int ans_right = query(2*node+2, half+1, node_right, query_left, query_right);
+  int ans_left = query(2*node+1, node_left, half,
+                       query_left, query_right);
+  int ans_right = query(2*node+2, half+1, node_right,
+                        query_left, query_right);
 
   if (ans_left == -1) return ans_right;
   if (ans_right == -1) return ans_left;
@@ -63,7 +68,8 @@ int SegmentTree::query(int node, int node_left, int node_right, int query_left, 
   return (arr[ans_left] <= arr[ans_right] ? ans_left : ans_right);
 }
 
-void SegmentTree::update(int node, int node_left, int node_right, int where, int what){
+void SegmentTree::update(int node, int node_left, int node_right,
+                         int where, int what){
   if (where < node_left || node_right < where) return;
   if (node_left == where && where == node_right){
     arr[where] = what;

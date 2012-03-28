@@ -3,4 +3,4 @@ for (int i=1; i*i<=n; i++) {
     cout << i << endl;
     if (i*i<n) cout << (n/i) << endl;
   }
-} 
+}

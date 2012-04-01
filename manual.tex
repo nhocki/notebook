@@ -321,6 +321,18 @@ y $m$ es la suma de las longitudes de todos los patrones.
 \subsection{Suffix array y longest common prefix}
 \codigofuente{./src/strings/suffix_array.cpp}
 
+\subsection{Hashing dinámico}
+
+Usando una modificación de un Fenwick Tree, se puede hacer una estructura de datos que soporta
+las siguientes operaciones en $O(\lg n)$:
+
+\begin{itemize}
+    \item Encontrar el hash de la subcadena [i..j].
+    \item Modificar el caracter en la posición i.
+\end{itemize}
+
+\codigofuente{./src/strings/dynamic_hashing.cpp}
+
 \section{Geometría}
 
 \subsection{Identidades trigonométricas}

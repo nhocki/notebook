@@ -58,3 +58,90 @@ namespace SuffixArray {
         lcp[0] = 0;
     }
 };
+
+////////////////////////////////////////////////////////////////
+
+// Applications:
+
+// lcp(x,y) = min(lcp(x,x+1), lcp(x+1, x+2), ... , lcp(y-1, y))
+
+void number_of_different_substrings(){
+  // If you have the i-th smaller suffix, Si,
+  //    it's length will be |Si| = n - sa[i]
+  // Now, lcp[i] stores the number of
+  //     common letters between Si and Si-1
+  //     (s.substr(sa[i]) and s.substr(sa[i-1]))
+  // so, you have |Si| - lcp[i] different strings
+  //    from these two suffixes => n - lcp[i] - sa[i]
+  for(int i = 0; i < n; ++i) ans += n - sa[i] - lcp[i];
+}
+
+void number_of_repeated_substrings(){
+  // Number of substrings that appear at least twice in the text.
+  // The trick is that all 'spare' substrings that can give us 
+  // Lcp(i - 1, i) can be obtained by Lcp(i - 2, i - 1) 
+  // due to the ordered nature of our array.
+  // And the overall answer is 
+  // Lcp(0, 1) + 
+  //     Sum(max[0, Lcp(i, i - 1) - Lcp(i - 2, i - 1)])
+  //     for 2 <= i < n
+  // File Recover 
+  int cnt = lcp[1];
+  for(int i=2; i < n; ++i){
+    cnt += max(0, lcp[i] - lcp[i-1]);
+  }
+}
+
+
+void repeated_m_times(int m){
+  // Given a string s and an int m, find the size
+  // of the biggest substring repeated m times (find the rightmost pos)
+  // if a string is repeated m+1 times, then it's repeated m times too
+  // The answer is the maximum, over i, of the longest common prefix
+  // between suffix i+m-1 in the sorted array.
+  int length = 0, position = -1, t;
+  for (int i = 0; i <= n-m; ++i){
+    if ((t = getLcp(i, i+m-1, n)) > length){
+      length = t;
+      position = sa[i];
+    } else if (t == length) { position = max(position, sa[i]); }
+  }
+  // Here you'll get the rightmost position
+  // (that means, the last time the substring appears)
+  for (int i = 0; i < n; ){
+    if (sa[i] + length > n) { ++i; continue; }
+    int ps = 0, j = i+1;
+    while (j <n && lcp[j] >= length){
+      ps = max(ps, sa[j]);
+      j++;
+    }
+    if(j - i >= m) position = max(position, ps);
+    i = j;
+  }
+  if(length != 0)
+    printf("%d %d\n", length, position);
+  else
+    puts("none");
+}
+
+
+void smallest_rotation(){
+  // Reads a string of lenght k. Then just double it (s = s+s) 
+  // and find the suffix array.
+  // The answer is the smallest i for which s.size() - sa[i] >= k
+  // If you want the first appearence (and not the string)
+  // you'll need the second cycle
+  int best = 0;
+  for (int i=0; i < n; ++i){
+    if (n - sa[i] >= k){
+      //Find the first appearence of the string
+      while (n - sa[i] >= k){
+        if(sa[i] < sa[best] && sa[i] != 0) best = i;
+        i++;
+      }
+      break;
+    }
+  }
+  if (sa[best] == k) puts("0");
+  else printf("%d\n", sa[best]);
+}

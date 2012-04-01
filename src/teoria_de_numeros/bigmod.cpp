@@ -19,3 +19,14 @@ int bigmod(int b, int p, int m){
 // Si se cambian por unsigned long longs:
 // 0 <= b,p <= 18446744073709551615
 // 1 <= m <= 4294967295
+
+
+// Versión recursiva
+int bigMod(int b, int p, int m){
+  if(p == 0) return 1;
+  if (p % 2 == 0){
+    int x = bigMod(b, p/2, m);
+    return  (x * x) % m;
+  }
+  return ((b % m) * bigMod(b,p-1,m)) % m;
+}

@@ -25,8 +25,8 @@ int bigmod(int b, int p, int m){
 int bigMod(int b, int p, int m){
   if(p == 0) return 1;
   if (p % 2 == 0){
-    int x = bigMod(b, p/2, m);
+    int x = bigMod(b, p / 2, m);
     return  (x * x) % m;
   }
-  return ((b % m) * bigMod(b,p-1,m)) % m;
+  return ((b % m) * bigMod(b, p-1, m)) % m;
 }

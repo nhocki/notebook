@@ -12,7 +12,7 @@ int main(){
     M[0] = 0;
     int m = 0;
     for (int i = 0; i < S.size(); ++i){
-      int d = upper_bound(M.begin(), M.begin() + n, S[i]) - M.begin();
+      int d = upper_bound(M.begin(), M.begin()+n, S[i])-M.begin();
       if (S[i] != M[d-1]){
         M[d] = S[i];
         m = max(m,d);

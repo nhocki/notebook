@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{amsmath}
+\usepackage{calc}
 \usepackage{verbatim}
 \usepackage{hyperref}
 \usepackage{color}
@@ -84,6 +85,29 @@ Si la descomposición prima de $n > 1$ es $$n = p_0^{e_0} \times p_1^{e_1} \time
   \item \textbf{Euclid's Lemma:}  $ a \mid bc \land gcd(a, b) = 1 \rightarrow a \mid c $
   \item $ x^n - 1 = (x - 1)(x^{n - 1} + x^{n - 2} + \cdots + x + 1) $
 \end{itemize}
+
+\subsection{Inverso modular}
+
+El inverso modular de $a \bmod{n}$ es un entero denotado por $a^{-1}$ tal que $a (a^{-1}) \equiv 1 \pmod{n}$. Existe si y sólo si $gcd(a, n) == 1$.
+
+Si el inverso módulo $n$ existe, la operación de dividir por $a \bmod{n}$ se puede definir como multiplicar por el inverso.
+
+\codigofuente{./src/teoria_de_numeros/inverso_modular.cpp}
+
+\subsection{Teorema chino del residuo}
+
+Sean $b_1, b_2, \cdots, b_{r}$ enteros positivos primos relativos dos a dos. Llamemos $B = b_1 b_2 \cdots b_r$. El sistema de congruencias lineales
+\begin{align*}
+  x & \equiv a_1 \pmod{b_1} \\
+  x & \equiv  a_2 \pmod{b_2} \\
+    & \mathrel{\makebox[\widthof{=}]{\vdots}} \\
+  x & \equiv  a_r \pmod{b_r} \\
+\end{align*}
+tiene una solución simultánea que es única módulo $N$.
+
+La solución está dada por
+$$ a \equiv (a_1 c_1 + a_2 c_2 + \cdots + a_{r} c_{r}) \pmod{N} $$
+donde $c_i = m_i (m_i^{-1} \bmod{b_i})$ y $m_i = \dfrac{B}{b_i}$.
 
 \section{Combinatoria}
 \subsection{Cuadro resumen}

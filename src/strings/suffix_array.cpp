@@ -2,6 +2,10 @@
 
 //Usage: Call SuffixArray::compute(s), where s is the
 //       string you want the Suffix Array for.
+//
+// * * * IMPORTANT: The last character of s must compare less
+//       than any other character (for example, do s = s + '\1';
+//       before calling this function).
  
 //Output:
 // sa   = The suffix array. Contains the n suffixes of s sorted

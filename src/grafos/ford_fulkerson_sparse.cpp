@@ -22,10 +22,7 @@ namespace Flow {
     // to multiply by two at the end.
     const int MAXE = MAXN * (MAXN + 1) / 2 * 2; 
     const int oo = INT_MAX / 4;
-    int first[MAXN];
-    int next[MAXE];
-    int adj[MAXE];
-    int cap[MAXE];
+    int first[MAXN], next[MAXE], adj[MAXE], cap[MAXE];
     int current_edge;
 
     /*

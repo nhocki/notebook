@@ -472,6 +472,18 @@ La función \verb!point_in_box! es la misma que en \ref{hallar_interseccion_segm
 
 \codigofuente{./src/geometria/circle_through_3_points.cpp}
 
+\subsection{Hallar la intersección de un segmento y una superfice cuádrica (esfera, cono, elipsoide, hiperboloide o paraboloide)}
+
+% Las ecuaciones están aquí: http://www.professores.uff.br/hjbortol/arquivo/2007.1/qs/quadric-surfaces_br.html
+
+La ecuación genérica para describir una superficie cuádrica es
+
+$$ ax^2 + by^2 + cz^2 + dxy + exz + fyz + gx + hy + iz + j = 0 $$
+
+Se tiene un segmento de $P$ a $Q$ y se quiere hallar la intersección (si existe):
+
+\codigofuente{./src/geometria/segment_quadric_intersection.cpp}
+
 % ---------------------------------------------------------------
 \section{Estructuras de datos}
 \subsection{Árboles de Fenwick ó Binary indexed trees}
@@ -578,7 +590,7 @@ Consideraciones que podrían ser causa de un Wrong Answer:
   \end{item}
   
   \begin{item}
-    El producto cruz está invertido. Realmente es $\mid<a_x, a_y> \times <b_x, b_y>\mid = a_x \mathbf{b_y} - a_y \mathbf{b_x} \neq a_x \mathbf{b_x} - a_y \mathbf{b_y} $.
+    El producto cruz está invertido. Realmente es $$|\langle a_x, a_y \rangle \times \langle b_x, b_y\rangle| = a_x \mathbf{b_y} - a_y \mathbf{b_x} \neq a_x \mathbf{b_x} - a_y \mathbf{b_y}. $$
   \end{item}
 \end{itemize}
 

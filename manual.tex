@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{geometry}
+\usepackage{pgfplots}
 %Poner la página en landscape
 \geometry{verbose,landscape,letterpaper,tmargin=1.5cm,bmargin=2cm,lmargin=1.6cm,rmargin=1.6cm}
 
@@ -474,7 +475,10 @@ La función \verb!point_in_box! es la misma que en \ref{hallar_interseccion_segm
 
 \subsection{Hallar la intersección de un segmento y una superfice cuádrica (esfera, cono, elipsoide, hiperboloide o paraboloide)}
 
-% Las ecuaciones están aquí: http://www.professores.uff.br/hjbortol/arquivo/2007.1/qs/quadric-surfaces_br.html
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{UVa} - 11334 - Antenna in the Cinoc Mountains
+\end{itemize}
 
 La ecuación genérica para describir una superficie cuádrica es
 
@@ -483,6 +487,47 @@ $$ ax^2 + by^2 + cz^2 + dxy + exz + fyz + gx + hy + iz + j = 0 $$
 Se tiene un segmento de $P$ a $Q$ y se quiere hallar la intersección (si existe):
 
 \codigofuente{./src/geometria/segment_quadric_intersection.cpp}
+
+Estas son las ecuaciones de las cónicas más comunes:
+
+% Las ecuaciones están aquí: http://www.professores.uff.br/hjbortol/arquivo/2007.1/qs/quadric-surfaces_br.html
+
+\begin{itemize}
+    \item \emph{Elipsoide}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1.$$
+    $a$, $b$ y $c$ son los  ``radios'' en cada dirección (cuando $a = b = c$ se tiene una esfera).
+    \item \emph{Paraboloide elíptico}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} - z = 0.$$ (Cuando $a = b$ se tiene un paraboloide circular).
+    \item \emph{Paraboloide hiperbólico} (\small{silla de montar o papa Pringles}): $$ \frac{x^2}{a^2} - \frac{y^2}{b^2} - z = 0.$$.
+    \item \emph{Hiperboloide de una hoja}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1.$$
+    \item \emph{Hiperboloide de dos hojas}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = -1.$$
+    \item \emph{Cono}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0.$$ (Cuando $a = b$ se tiene un cono circular).
+    
+    \begin{tikzpicture}
+    \begin{axis}[
+        domain=0:5,
+        y domain=0:2*pi,
+        xmin=-10,
+        xmax=10,
+        ymin=-10,
+        ymax=10,
+        samples=20]
+    \addplot3 [mesh,draw=black,z buffer=sort,samples=20] 
+        ({x*cos(deg(y))},
+         {x*sin(deg(y))},
+         {x});
+    \addplot3 [mesh,draw=black,z buffer=sort] 
+        ({x*cos(deg(y))},
+         {x*sin(deg(y))},
+         {-x});
+    \end{axis}
+    \end{tikzpicture}.
+    
+    Para mover el cono se puede usar la ecuación $$ \frac{(x - x_0)^2}{a^2} + \frac{(y - y_0)^2}{b^2} - \frac{(z - z_0)^2}{c^2} = 0$$ aunque generalmente es más fácil trasladar todos los objetos tal que el ápice del cono quede en el origen. Para cambiar el eje en el que se abre el cono, se cambia el signo menos en la ecuación y se pone en frente del eje sobre el que se quiere abrir. Para un cono que se abre en $\mathcal{Z}$ y que tiene radio $r$ a la altura $h$ (como en \emph{Antenna in the Cinoc Mountains}) se usa la ecuación $ \displaystyle x^2 + y^2 = (\frac{r}{h}z)^2.$
+    
+    \item \emph{Cilindro elíptico}: $$ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1.$$ (Cuando $a = b$ se tiene un cilindro circular).
+    \item \emph{Planos que se intersectan}: $$ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 0. $$
+    
+\end{itemize}
+
 
 % ---------------------------------------------------------------
 \section{Estructuras de datos}
@@ -598,10 +643,9 @@ Consideraciones que podrían ser causa de un Wrong Answer:
 
 Para redondear un doble a $k$ cifras, usar:
 
-$$ \frac{\lfloor 10^{k} \cdot x + 0.5 \rfloor }{10^k} $$
+$$ \dfrac{\lfloor 10^{k} \cdot x + 0.5 \rfloor }{10^k} $$
 
 Ejemplo:
-
 \begin{verbatim}
   double d = 1.2345;
   d = floor(1000 * d + 0.5) / 1000;

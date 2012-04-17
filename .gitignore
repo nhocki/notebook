@@ -2,5 +2,6 @@
 *.out
 *.toc
 *.aux
+*.auxlock
 *.log
 manual.synctex.gz

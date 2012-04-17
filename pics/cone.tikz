@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\begin{axis}[
+    domain=0:5,
+    y domain=0:2*pi,
+    xmin=-10,
+    xmax=10,
+    ymin=-10,
+    ymax=10,
+    samples=20]
+\addplot3 [mesh,draw=black,z buffer=sort,samples=20] 
+    ({x*cos(deg(y))},
+     {x*sin(deg(y))},
+     {x});
+\addplot3 [mesh,draw=black,z buffer=sort] 
+    ({x*cos(deg(y))},
+     {x*sin(deg(y))},
+     {-x});
+\end{axis}
+\end{tikzpicture}.

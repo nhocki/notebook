@@ -11,7 +11,19 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{geometry}
+\usepackage[pdftex]{graphicx}
 \usepackage{pgfplots}
+\usepackage{array}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=pics/]
+
+% Para incluir gráficas en MetaPost: http://tex.stackexchange.com/questions/1565/metapost-pictures-in-pdflatex
+\DeclareGraphicsRule{.1}{mps}{*}{} 
+\DeclareGraphicsRule{.2}{mps}{*}{}
+\DeclareGraphicsRule{.3}{mps}{*}{}
+\DeclareGraphicsRule{.4}{mps}{*}{}
+
 %Poner la página en landscape
 \geometry{verbose,landscape,letterpaper,tmargin=1.5cm,bmargin=2cm,lmargin=1.6cm,rmargin=1.6cm}
 
@@ -472,6 +484,40 @@ La función \verb!point_in_box! es la misma que en \ref{hallar_interseccion_segm
 \normalsize
 
 \codigofuente{./src/geometria/circle_through_3_points.cpp}
+
+\subsection{Reflejar un rayo de luz en un espejo}
+
+Dado un rayo $\vec a$ incidente en una superficie con vector normal unitario $\vec n$ se quiere encontrar el rayo $\vec b$ reflejado en ese punto:
+
+
+\begin{center}
+    \begin{tabular}{ >{\centering\arraybackslash} m{4cm} >{\centering\arraybackslash} m{4cm} }
+     \includegraphics{./pics/reflected_ray.1} & $ \vec b = \vec a - 2 (\vec a \cdot \vec n) \vec n $\\
+    \end{tabular}
+\end{center}
+
+donde $\cdot$ es producto punto. ¡Para que la fórmula funcione $\vec n$ tiene que ser unitario! Notar que no importa cuál de las dos direcciones tiene $\vec n$ porque si lo reemplazamos por $-\vec n$ da el mismo resultado.
+
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{Live Archive} - 5929 - Laser Tag
+\end{itemize}
+
+\codigofuente{./src/geometria/reflect_ray.cpp}
+
+\subsection{Reflejar un punto al otro lado de una recta}
+
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{Live Archive} - 5929 - Laser Tag
+\end{itemize}
+
+
+\begin{center}
+    \includegraphics{./pics/reflected_point.1}
+\end{center}
+
+\codigofuente{./src/geometria/reflect_point.cpp}
 
 \subsection{Hallar la intersección de un segmento y una superfice cuádrica (esfera, cono, elipsoide, hiperboloide o paraboloide)}
 

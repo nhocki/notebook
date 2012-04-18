@@ -485,6 +485,19 @@ La función \verb!point_in_box! es la misma que en \ref{hallar_interseccion_segm
 
 \codigofuente{./src/geometria/circle_through_3_points.cpp}
 
+\subsection{Proyección de un vector en otro}
+
+$$
+\vec a \text{ proyectado en } \vec b = \vec c = \dfrac{\vec a \cdot \vec b}{|{\vec b}^2|} \vec b = \dfrac{\vec a \cdot \vec b}{\vec b \cdot \vec b} \vec b. $$
+
+$\vec c$ es un vector nulo ó paralelo a $\vec b$ cuya magnitud es la ``sombra'' (la proyección ortogonal) proyectada por el vector $\vec a$ sobre una recta infinita paralela a $\vec b$. Si $\theta$ es el ángulo entre $\vec a$ y $\vec b$ entonces:
+
+\begin{itemize}
+    \item $\vec c = \vec 0$ si $\theta = 90^{\circ}, $
+    \item $\vec c$ tiene la misma dirección que $\vec b$ si $0 \leq \theta < 90^{\circ}, $
+    \item $\vec c$ tiene dirección contraria a $\vec b$ si $90 < \theta \leq 180^{\circ}. $
+\end{itemize}
+
 \subsection{Reflejar un rayo de luz en un espejo}
 
 Dado un rayo $\vec a$ incidente en una superficie con vector normal unitario $\vec n$ se quiere encontrar el rayo $\vec b$ reflejado en ese punto:

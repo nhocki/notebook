@@ -500,6 +500,11 @@ $\vec c$ es un vector nulo ó paralelo a $\vec b$ cuya magnitud es la ``sombra''
 
 \subsection{Reflejar un rayo de luz en un espejo}
 
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{Live Archive} - 5929 - Laser Tag
+\end{itemize}
+
 Dado un rayo $\vec a$ incidente en una superficie con vector normal unitario $\vec n$ se quiere encontrar el rayo $\vec b$ reflejado en ese punto:
 
 
@@ -511,10 +516,6 @@ Dado un rayo $\vec a$ incidente en una superficie con vector normal unitario $\v
 
 donde $\cdot$ es producto punto. ¡Para que la fórmula funcione $\vec n$ tiene que ser unitario! Notar que no importa cuál de las dos direcciones tiene $\vec n$ porque si lo reemplazamos por $-\vec n$ da el mismo resultado.
 
-\textbf{Field-testing:}
-\begin{itemize}
-\item \emph{Live Archive} - 5929 - Laser Tag
-\end{itemize}
 
 \codigofuente{./src/geometria/reflect_ray.cpp}
 
@@ -695,6 +696,13 @@ Consideraciones que podrían ser causa de un Wrong Answer:
   
   \begin{item}
     El producto cruz está invertido. Realmente es $$|\langle a_x, a_y \rangle \times \langle b_x, b_y\rangle| = a_x \mathbf{b_y} - a_y \mathbf{b_x} \neq a_x \mathbf{b_x} - a_y \mathbf{b_y}. $$
+  \end{item}
+  
+  \begin{item}
+      Hay una resta módulo $m$ pero no se revisa si el resultado es negativo. Se corrige haciendo \begin{verbatim}
+      ans = (ans - b) % mod;
+      if (ans < 0) ans += mod;   // !
+\end{verbatim}.
   \end{item}
 \end{itemize}
 

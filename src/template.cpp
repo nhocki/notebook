@@ -5,7 +5,6 @@ using namespace std;
 #include <sstream>
 #include <fstream>
 #include <cassert>
-#include <climits>
 #include <cstdlib>
 #include <cstring>
 #include <string>
@@ -13,9 +12,7 @@ using namespace std;
 #include <vector>
 #include <cmath>
 #include <queue>
-#include <deque>
 #include <stack>
-#include <list>
 #include <map>
 #include <set>
 

@@ -28,7 +28,7 @@ namespace LCA {
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    void dfs(int v, int p = 0) {
+    void dfs(int v, int p) {
         tin[v] = ++timer;
         up[v][0] = p;
         for (int i = 1; i <= L; ++i)
@@ -55,6 +55,6 @@ namespace LCA {
         while ((1 << L) <= n) ++L;
         for (int i = 0; i < n; ++i) up[i].resize(L + 1);
         timer = 0;
-        dfs(root);
+        dfs(root, root);
     }
 };

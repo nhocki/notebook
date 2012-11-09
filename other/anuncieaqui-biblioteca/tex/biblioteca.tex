@@ -1,0 +1,147 @@
+\documentclass[a4paper]{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage[pdftex]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{multicol}
+
+\lstset{language=C++}
+\lstset{columns=fullflexible}
+\lstset{basicstyle=\scriptsize\ttfamily}
+\lstset{showspaces=false}
+
+\geometry{landscape}
+\setlength{\topmargin}{-0.25in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\columnsep}{1in}
+\setlength{\columnseprule}{0.2pt}
+\textwidth 9.5in
+
+\pagestyle{fancy}
+\lhead{Universidade Federal de Sergipe}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\newcommand\includefile[4]{
+  \begin{multicols}{2}
+    [\subsection{#2}{Hash: \input{#3/.#4.hash}}\ ]
+    \lstinputlisting[language=#1]{#3/#4}
+  \end{multicols}
+}
+
+\newcommand{\stirlingfirst}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\stirlingsecond}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+
+\begin{document}
+  \thispagestyle{fancy}
+  \begin{center}
+    \Huge\textsc{ACM ICPC Team Reference \\ 2010 World Finals}
+
+    \ 
+ 
+    \huge Team Anuncie Aqui \\ Universidade Federal de Sergipe
+
+    \ 
+
+  \end{center}
+
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+  \section{Configuration files and scripts}
+    \includefile{lisp}{.emacs}{../config}{dotemacs}
+    \includefile{make}{Makefile}{../config}{flymake.mk}
+    \includefile{c++}{.vimrc}{../config}{dotvimrc}
+    \includefile{c++}{Hash generator}{../config}{hashgen}
+    \includefile{c++}{Solution template}{../config}{template.cpp}
+
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+  \section{Graph algorithms}
+    \includefile{c++}{Tarjan's SCC algorithm}{../graph}{scc.cpp}
+    \includefile{c++}{Dinic's maximum flow algorithm}{../graph}{dinic.cpp}
+    \includefile{c++}{Successive shortest paths mincost maxflow algorithm}
+                {../graph}{busacker_gowen.cpp}
+    \includefile{c++}{Kuhn-Munkres' weighted bipartite matching algorithm}
+                {../graph}{kuhn_munkres.cpp}
+    \includefile{c++}{Gomory-Hu tree}{../graph}{gomory_hu.cpp}
+    \includefile{c++}{Gabow's general matching algorithm}{../graph}{gabow.cpp}
+    \includefile{c++}{Heavy-light decomposition}{../graph}{heavy_light.cpp}
+    \includefile{c++}{Link-cut tree}{../graph}{link_cut.cpp}
+
+  \section{Math}
+    \includefile{c++}{Fractions}{../math}{frac.cpp}
+    \includefile{c++}{Chinese remainder theorem}{../math}{crt.cpp}
+    \includefile{c++}{Longest increasing subsequence}{../math}{lis.cpp}
+    \includefile{c++}{Simplex (Warsaw University)}{../math}{simplex.cpp}
+    \includefile{c++}{Romberg's method}{../math}{romberg.cpp}
+    \includefile{c++}{Floyd's cycle detection algorithm}{../math}{floyd.cpp}
+    \includefile{c++}{Pollard's rho algorithm}{../math}{pollard.cpp}
+    \includefile{c++}{Miller-Rabin's algorithm}{../math}{miller_rabin.cpp}
+    \includefile{c++}{Cooley-Tukey's algorithm}{../math}{fft.cpp}
+    \includefile{c++}{Karatsuba's algorithm}{../math}{karatsuba.cpp}
+    \includefile{c++}{Optimized sieve of Erathostenes}{../math}{sieve.cpp}
+    \includefile{c++}{Polynomials (PUC-Rio)}{../math}{polynomials.cpp}
+
+  \section{Geometry}
+    \includefile{c++}{Point class}{../geometry}{point.cpp}
+    \includefile{c++}{Intersection primitives}{../geometry}{isect_primitives.cpp}
+    \includefile{c++}{Polygon primitives}{../geometry}{polygon_primitives.cpp}
+    \includefile{c++}{Miscellaneous primitives}{../geometry}{misc_primitives.cpp}
+    \includefile{c++}{Smallest enclosing circle}{../geometry}{enclosing_circle.cpp}
+    \includefile{c++}{Convex hull}{../geometry}{hull.cpp}
+    \includefile{c++}{Closest pair of points}{../geometry}{closest_points.cpp}
+    \includefile{c++}{Kd-tree}{../geometry}{kd_tree.cpp}
+    \includefile{c++}{Range tree}{../geometry}{range_tree.cpp}
+
+  \section{Data structures}
+    \includefile{c++}{Treap}{../structures}{treap.cpp}
+    \includefile{c++}{Heap}{../structures}{heap.cpp}
+    \includefile{c++}{Big numbers (PUC-Rio)}{../structures}{bignum.cpp}
+
+  \section{String algorithms}
+    \includefile{c++}{Morris-Pratt's algorithm}{../string}{morris_pratt.cpp}
+    \includefile{c++}{Manacher's algorithm}{../string}{manacher.cpp}
+    \includefile{c++}{Kärkkäinen-Sanders' suffix array algorithm}{../string}{karkkainen.cpp}
+    \includefile{c++}{Aho-Corasick's algorithm (Shinta)}{../string}{aho_corasick_2.cpp}
+    \includefile{c++}{Aho-Corasick's algorithm (UFPE)}{../string}{aho_corasick.cpp}
+
+  \enlargethispage*{\baselineskip}
+  \pagebreak
+
+  \section{Useful mathematical facts}
+  \begin{multicols}{2}
+    \input{math_facts}
+  \end{multicols}
+
+%  \enlargethispage*{\baselineskip}
+%  \pagebreak
+%
+%  \section{Mistakes to avoid and strategy hints}
+%  \begin{multicols}{2}
+%    \input{mistakes}
+%  \end{multicols}
+
+%  \enlargethispage*{\baselineskip}
+%  \pagebreak
+%
+%  \begin{center}
+%    \Huge\textsc{ACM ICPC Team Reference - Contents}
+%
+%    \vspace{0.35cm}
+%
+%    \huge Team Anuncie Aqui \\ Universidade Federal de Sergipe
+%
+%    \vspace{0.35cm}
+%
+%  \end{center}
+%
+%  \begin{multicols}{2}
+%    \tableofcontents
+%  \end{multicols}
+\end{document}

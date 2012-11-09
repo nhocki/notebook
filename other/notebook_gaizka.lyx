@@ -1,0 +1,10952 @@
+#LyX 1.5.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman ae
+\font_sans default
+\font_typewriter default
+\font_default_family ttdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation landscape
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+// INDEX
+\end_layout
+
+\begin_layout Standard
+// BIT ..........................................
+ pág.
+ \InsetSpace ~
+1
+\end_layout
+
+\begin_layout Standard
+// DISJOINT-SET DATA STRUCTURE ..................
+ pág.
+ \InsetSpace ~
+1
+\end_layout
+
+\begin_layout Standard
+// BINARY HEAP ..................................
+ pág.
+ \InsetSpace ~
+2
+\end_layout
+
+\begin_layout Standard
+// SEGMENT TREE .................................
+ pág.
+ \InsetSpace ~
+3
+\end_layout
+
+\begin_layout Standard
+// BINOMIAL COEFFICIENT .........................
+ pág.
+ \InsetSpace ~
+5
+\end_layout
+
+\begin_layout Standard
+// LIS NLogN ....................................
+ pág.
+ \InsetSpace ~
+5
+\end_layout
+
+\begin_layout Standard
+// GEOMETRY .....................................
+ pág.
+ \InsetSpace ~
+5
+\end_layout
+
+\begin_layout Standard
+// BELLMAN FORD .................................
+ pág.
+ \InsetSpace ~
+9
+\end_layout
+
+\begin_layout Standard
+// DIJKSTRA ELogV ...............................
+ pág.
+ 10
+\end_layout
+
+\begin_layout Standard
+// DIJKSTRA V^2 .................................
+ pág.
+ 11
+\end_layout
+
+\begin_layout Standard
+// FLOYD WARSHALL ...............................
+ pág.
+ 11
+\end_layout
+
+\begin_layout Standard
+// FORD-FULKERSON ...............................
+ pág.
+ 12
+\end_layout
+
+\begin_layout Standard
+// MINCOST-MAXFLOW ..............................
+ pág.
+ 14
+\end_layout
+
+\begin_layout Standard
+// BITS & SETS ..................................
+ pág.
+ 15
+\end_layout
+
+\begin_layout Standard
+// NUMBER THEORY ................................
+ pág.
+ 16
+\end_layout
+
+\begin_layout Standard
+// SQUARE ROOT ..................................
+ pág.
+ 18
+\end_layout
+
+\begin_layout Standard
+// UTILITIES ....................................
+ pág.
+ 18
+\end_layout
+
+\begin_layout Standard
+// 2-SAT AND STRONGLY CONNECTED COMPONENTS.......
+ pág.
+ 19
+\end_layout
+
+\begin_layout Standard
+// GEOMETRY ON JAVA .............................
+ pág.
+ 21
+\end_layout
+
+\begin_layout Standard
+// SEGMENT TREE FOR SQUARES AREA ................
+ pág.
+ 23
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Implementation of a Binary Indexed Tree.
+\end_layout
+
+\begin_layout Standard
+// It supports these two operations:
+\end_layout
+
+\begin_layout Standard
+// Modify the value of one element of the array in O(log n).
+\end_layout
+
+\begin_layout Standard
+// Query the sum in a range [a, b] in O(log n).
+\end_layout
+
+\begin_layout Standard
+const int MAX_BIT_SIZE = 1024;
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+class BIT {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+public:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+BIT(int n, T z) : size(n), zero(z) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) bit_array[i] = zero;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+~BIT() {}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T QueryBIT(int a, int b) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (a == 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T sum = zero;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (; b >= 0; b = (b & (b + 1)) - 1) sum += bit_array[b];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return sum;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else return QueryBIT(0, b) - QueryBIT(0, a - 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void IncreaseBIT(int k, T inc) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (; k < size; k |= k + 1) bit_array[k] += inc;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+private:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int size;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T bit_array[MAX_BIT_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T zero;
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Disjoint-Set Data Structure with a forest using union
+\end_layout
+
+\begin_layout Standard
+// by rank and path compression.
+ With these, the amortized
+\end_layout
+
+\begin_layout Standard
+// time per operation is only O(a(n)) where a(n) is the
+\end_layout
+
+\begin_layout Standard
+// inverse of the function A(n, n), and A is the extremely
+\end_layout
+
+\begin_layout Standard
+// quickly-growing Ackermann function.
+ Since a(n) is its
+\end_layout
+
+\begin_layout Standard
+// inverse, it's less than 5 for all remotely practical
+\end_layout
+
+\begin_layout Standard
+// values of n.
+\end_layout
+
+\begin_layout Standard
+const int DISJOINT_SIZE = 1000010;
+\end_layout
+
+\begin_layout Standard
+int parent[DISJOINT_SIZE];
+\end_layout
+
+\begin_layout Standard
+int rank[DISJOINT_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void Initialize() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < DISJOINT_SIZE; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parent[i] = i;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+rank[i] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Returns the representative for the set that x is in.
+\end_layout
+
+\begin_layout Standard
+int Find(int x) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (parent[x] == x) return x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return parent[x] = Find(parent[x]);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Merge the sets that contain x and y.
+\end_layout
+
+\begin_layout Standard
+void Merge(int x, int y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int x_root = Find(x);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int y_root = Find(y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (rank[x_root] > rank[y_root]) parent[y_root] = x_root;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+else if (rank[x_root] < rank[y_root]) parent[x_root] = y_root;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+else if (x_root != y_root) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parent[y_root] = x_root;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+++rank[x_root];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+// End of the Disjoint-Set Data Structure.
+ 
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Implementation of a binary heap.
+ Usually for Dijkstra in
+\end_layout
+
+\begin_layout Standard
+// O(ElogV).
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int MAX_HEAP_SIZE = 1024;
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+class Heap {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+public:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Heap() : size(0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < MAX_HEAP_SIZE; ++i) qp[i] = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+~Heap() {}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void Swim(int e) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = qp[e], j = (i - 1) / 2, t; v[pq[i]] < v[pq[j]];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+i = j, j = (i - 1) / 2) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+t = pq[i]; pq[i] = pq[j]; pq[j] = t;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+qp[pq[i]] = i; qp[pq[j]] = j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void Sink(int e) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = qp[e], j = 2 * i + 1, t; j < size;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+i = j, j = 2 * i + 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (j + 1 < size && v[pq[j + 1]] < v[pq[j]]) ++j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (v[pq[j]] >= v[pq[i]]) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+t = pq[i]; pq[i] = pq[j]; pq[j] = t;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+qp[pq[i]] = i; qp[pq[j]] = j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void DeleteElement(int e) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int ori = qp[e];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+pq[ori] = pq[--size]; qp[e] = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (size) qp[pq[ori]] = ori;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Sink(pq[ori]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void InsertOrModify(int e, T p) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+bool decrease = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (qp[e] < 0 || v[e] > p) decrease = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (qp[e] < 0) qp[pq[size] = e] = size++;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+v[e] = p;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (decrease) Swim(e); else Sink(e);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int Top() { return pq[0]; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool Empty() { return size == 0; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int GetSize() { return size; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T GetValue(int e) { return v[e]; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int Pop() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int ret = pq[0];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+DeleteElement(ret);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return ret;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+private:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T v[MAX_HEAP_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int pq[MAX_HEAP_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int qp[MAX_HEAP_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int size;
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+//Testing 
+\end_layout
+
+\begin_layout Standard
+int main() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Heap <int> heap;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < 11; ++i) heap.InsertOrModify(i, 10 - i);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (!heap.Empty()) cout << heap.Pop() << " ";
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < 11; ++i) heap.InsertOrModify(i, 10 - i);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(0, 0);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(10, 8);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (!heap.Empty()) cout << heap.Pop() << " ";
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(0, 10);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(0, 5);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << heap.GetValue(heap.Top()) << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(0, 8);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << heap.GetValue(heap.Top()) << endl;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// //////////////////
+\end_layout
+
+\begin_layout Standard
+// // SEGMENT TREE //
+\end_layout
+
+\begin_layout Standard
+// //////////////////
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int MAX_SIZE = 100000;
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+class SegmentTree {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+public:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+SegmentTree(T array[], int n) : elements(n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+InitializeSegmentTree(0, 0, elements - 1, array);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+SegmentTree(int n) : elements(n) {}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+~SegmentTree() {}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void AddElement(int or_index, T val, int index = 0,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int left = 0, int right = -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (right == -1) right = elements - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (left == right) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] += val; return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = (left + right) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int lnode = 2 * index + 1, rnode = lnode + 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (or_index >= left && or_index <= mid)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+AddElement(or_index, val, lnode, left, mid);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+else
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+AddElement(or_index, val, rnode, mid + 1, right);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] = tree[lnode] + tree[rnode];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void AddElements(int a_left, int a_right, T val,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int index = 0, int left = 0, int right = -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (right == -1) right = elements - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (a_left > right || a_right < left) return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (left >= a_left && right <= a_right) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] += T (right - left + 1) * val;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+add[index] += val; return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = (left + right) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int lnode = 2 * index + 1, rnode = lnode + 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+AddElements(a_left, a_right, val, lnode, left, mid);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+AddElements(a_left, a_right, val, rnode, mid + 1, right);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] = tree[lnode] + tree[rnode] +
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T (right - left + 1) * add[index];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T Query(int q_left, int q_right, int index = 0, int left = 0,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int right = -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (right == -1) right = elements - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (q_left > right || q_right < left) return 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (left >= q_left && right <= q_right) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T ret = tree[index]; if (!index) return ret;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int parent = (index - 1) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (parent >= 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ret += T (right - left + 1) * add[parent];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (!parent) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parent = (parent - 1) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return ret;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = (left + right) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int lnode = 2 * index + 1, rnode = lnode + 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T r1 = Query(q_left, q_right, lnode, left, mid);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T r2 = Query(q_left, q_right, rnode, mid + 1, right);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return r1 + r2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+private:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+void InitializeSegmentTree(int index, int left, int right,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+T array[]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (left == right) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] = array[left]; return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = (left + right) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int lnode = 2 * index + 1, rnode = lnode + 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+InitializeSegmentTree(lnode, left, mid, array);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+InitializeSegmentTree(rnode, mid + 1, right, array);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree[index] = tree[lnode] + tree[rnode];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// An upper bound for the capacity given by
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// 2 * 2 ^ ([logn] + 1)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T tree[4 * MAX_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Extra tree that contains the additions that should be made
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// to the given node and all of its children.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T add[4 * MAX_SIZE];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int elements;
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+int main() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+SegmentTree <long long> *tree;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+tree = new SegmentTree <long long>(10);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < 10; ++i) tree->AddElement(i, 5);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+tree->AddElements(0, 9, 5);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << tree->Query(0, 9);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// DYNAMIC PROGRAMMING
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// The Binomial coefficient, very useful for DP and
+\end_layout
+
+\begin_layout Standard
+// combinatorics problems.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int TAM = 30;
+\end_layout
+
+\begin_layout Standard
+long long nCr[TAM][TAM];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void CalcChoose() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+memset(nCr, 0, sizeof(nCr));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < TAM; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+nCr[i][0] = nCr[i][i] = 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 1; j < i; ++j)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ nCr[i][j] = nCr[i-1][j-1] + nCr[i-1][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Longest Increasing Subsequence in NLogN.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+public class LIS {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+public static int LongestIncSubsequenceNlogN(int[] array) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int[] A = new int[array.length + 1];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Arrays.fill(A, Integer.MAX_VALUE);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int longest = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < array.length; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int low = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int high = array.length - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (low < high) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = low + (high - low + 1) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// If it is not strict, change >= with >
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (A[mid] >= array[i]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+high = mid - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+low = mid;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (A[low + 1] > array[i]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+A[low + 1] = array[i];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+longest = (low + 1 > longest) ? low + 1 : longest;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return longest;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// GEOMETRY
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Comparison function required to compare points with double
+\end_layout
+
+\begin_layout Standard
+// coordinates.
+\end_layout
+
+\begin_layout Standard
+const double EPS = 1e-10;
+\end_layout
+
+\begin_layout Standard
+inline int cmp(double x, double y = 0, double tol = EPS) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (x <= y + tol) ? (x + tol < y) ? -1 : 0 : 1;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+// Useful geometry utilities.
+\end_layout
+
+\begin_layout Standard
+// Point class with operator overloading.
+\end_layout
+
+\begin_layout Standard
+class Point {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+public:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point(double x_ = 0.0, double y_ = 0.0) : x(x_), y(y_) {}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point operator +(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Point(x + o.x, y + o.y); }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point operator -(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Point(x - o.x, y - o.y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point operator *(const double &m) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Point(m * x, m * y); }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point operator /(const double &m) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Point(x / m, y / m); }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Dot Product
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double operator *(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return x * o.x + y * o.y; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Cross Product
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double operator ^(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return x * o.y - y * o.x; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int cmp(Point o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (int t = ::cmp(x, o.x)) return t;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return ::cmp(y, o.y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool operator ==(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return cmp(o) == 0; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool operator !=(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return cmp(o) != 0; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool operator < (const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return cmp(o) < 0; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Euclidean distance between two points.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double Distance(const Point &o) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double d1 = x - o.x, d2 = y - o.y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return sqrt(d1 * d1 + d2 * d2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Calculates the distance between the point and the line
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// specified by the two points given; if isSegment is true,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// we treat those two points are the endpoints of a segment.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double Distance(const Point &p1, const Point &p2,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+const bool &isSegment) const {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double dist = ((p2 - p1) ^ (*this - p1)) / p2.Distance(p1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (isSegment) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double dot1 = (*this - p2) * (p2 - p1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(dot1) > 0)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return sqrt((p2 - *this) * (p2 - *this));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double dot2 = (*this - p1) * (p1 - p2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(dot2) > 0)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return sqrt((p1 - *this) * (p1 - *this));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return abs(dist);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+friend ostream& operator <<(ostream &o, Point p) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return o << "(" << p.x << ", " << p.y << ")";
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double x, y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+static Point pivot;
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+Point Point::pivot(0, 0);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Calculates the angle between the two vectors defined by
+\end_layout
+
+\begin_layout Standard
+// p - r and q - r.
+ The formula comes from the definition of
+\end_layout
+
+\begin_layout Standard
+// the dot and the cross product:
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// A .
+ B = |A||B|cos(c)
+\end_layout
+
+\begin_layout Standard
+// A x B = |A||B|sin(c)
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// sin(c)\InsetSpace ~
+\InsetSpace ~
+ A x B
+\end_layout
+
+\begin_layout Standard
+// ------ = ------ = tan(c)
+\end_layout
+
+\begin_layout Standard
+// cos(c)\InsetSpace ~
+\InsetSpace ~
+ A .
+ B
+\end_layout
+
+\begin_layout Standard
+inline double angle(const Point &p, const Point &q,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+const Point &r) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point u = p - r, v = q - r;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return atan2(u ^ v, u * v);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Calculates sign of the turn between the two vectors defined
+\end_layout
+
+\begin_layout Standard
+// by <p-r> and <q-r>.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// Just to remember, the cross product is defined by (x1 * y2) -
+\end_layout
+
+\begin_layout Standard
+// (x2 * y1) and is negative if it is a right turn and positive
+\end_layout
+
+\begin_layout Standard
+// if it is a left turn.
+ e.g.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+.p3
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+^
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+/
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+.p2 /
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+^\InsetSpace ~
+ /
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ |\InsetSpace ~
+/
+\end_layout
+
+\begin_layout Standard
+// \InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+.p1
+\end_layout
+
+\begin_layout Standard
+// The cross product between the vectors <p2-p1> and <p3-p1>
+\end_layout
+
+\begin_layout Standard
+// is negative, that means it is a right turn.
+\end_layout
+
+\begin_layout Standard
+inline int turn(const Point &p, const Point &q,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+const Point &r) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ::cmp((p - r) ^ (q - r));
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Decides if the point r is inside the segment defined by the
+\end_layout
+
+\begin_layout Standard
+// points p and q.
+ To do this, we have to check two conditions:
+\end_layout
+
+\begin_layout Standard
+// 1.
+ That the turn between the two vectors formed by p - q and
+\end_layout
+
+\begin_layout Standard
+// r - q is zero (that means they are parallel).
+\end_layout
+
+\begin_layout Standard
+// 2.
+ That the dot product between the vector formed by p - r
+\end_layout
+
+\begin_layout Standard
+// and q - r (that means the testing point as the initial point
+\end_layout
+
+\begin_layout Standard
+// for both vectors) is less than or equal to zero (that means
+\end_layout
+
+\begin_layout Standard
+// that the two vectors have opposite direction).
+\end_layout
+
+\begin_layout Standard
+inline bool between(const Point &p, const Point &q,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+const Point &r){
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return turn(p, r, q) == 0 && ::cmp((p - r) * (q - r)) <= 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Returns 0, -1 or 1 depending if p is in the exterior, the
+\end_layout
+
+\begin_layout Standard
+// frontier or the interior of the given polygon respectively,
+\end_layout
+
+\begin_layout Standard
+// the polygon must be in clockwise or counterclockwise
+\end_layout
+
+\begin_layout Standard
+// order [MANDATORY!!].
+ The idea is to iterate over each of
+\end_layout
+
+\begin_layout Standard
+// the points in the polygon and consider the segment formed by
+\end_layout
+
+\begin_layout Standard
+// two adyacent points, if the test points is inside that
+\end_layout
+
+\begin_layout Standard
+// segment, the point is in the frontier, if not, we add the
+\end_layout
+
+\begin_layout Standard
+// angles inside the vectors formed by the two points of the
+\end_layout
+
+\begin_layout Standard
+// polygon and the test point.
+ For a point outside the
+\end_layout
+
+\begin_layout Standard
+// polygon this sum is zero because the angles cancel
+\end_layout
+
+\begin_layout Standard
+// themselves.
+\end_layout
+
+\begin_layout Standard
+int InPolygon(const Point &p, const vector<Point> &T) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double a = 0; int N = T.size();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (between(T[i], T[(i + 1) % N], p)) return -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+a += angle(T[i], T[(i + 1) % N], p);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ::cmp(a) != 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Comparator to be used in the sorting for the convex hull.
+\end_layout
+
+\begin_layout Standard
+// We sort the points based on the cross product between them
+\end_layout
+
+\begin_layout Standard
+// (the direction of the turn) and if the are colinear, we order
+\end_layout
+
+\begin_layout Standard
+// them based on their distances to the origin.
+ At the end,
+\end_layout
+
+\begin_layout Standard
+// the comparison based on the direction of the turn is the same
+\end_layout
+
+\begin_layout Standard
+// as the comparison based on the angles.
+\end_layout
+
+\begin_layout Standard
+bool RadialComp(const Point &p, const Point &q) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point P = p - Point::pivot, Q = q - Point::pivot;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double R = P ^ Q;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(R)) return R > 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ::cmp(P * P, Q * Q) < 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Returns the number of the quadrant that the point is in.
+ The
+\end_layout
+
+\begin_layout Standard
+// point (0,0) is clasified as in the fifth quadrant because it
+\end_layout
+
+\begin_layout Standard
+// really doesn't belong to any.
+\end_layout
+
+\begin_layout Standard
+int Quadrant(const Point &p) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.x) == 0 && ::cmp(p.y) == 0) return 5;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.y) == 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.x) == 1) return 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.y) == 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.x) == 1 || ::cmp(p.x) == 0) return 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return 3;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(p.x) == -1) return 3;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return 4;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Comparator to sort the points by their angle without
+\end_layout
+
+\begin_layout Standard
+// calculating their angles it is different from the
+\end_layout
+
+\begin_layout Standard
+// RadialComp because the cross product only works if the two
+\end_layout
+
+\begin_layout Standard
+// points to be compared are in two contiguous quadrants.
+ The
+\end_layout
+
+\begin_layout Standard
+// idea of the comparator is to find out the quadrant first
+\end_layout
+
+\begin_layout Standard
+// and if it is the same, then it calculates the cross product.
+\end_layout
+
+\begin_layout Standard
+bool PolarComp(const Point &p, const Point &q) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point P = p - Point::pivot, Q = q - Point::pivot;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int q1 = Quadrant(P), q2 = Quadrant(Q);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (q1 != q2) return q1 < q2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double R = P ^ Q;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (::cmp(R)) return R > 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ::cmp(P * P, Q * Q) < 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Convex Hull, The vector of points can't be passed by
+\end_layout
+
+\begin_layout Standard
+// reference since we manipulate it here and it gets changed.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// We set the pivot as the minimum point in the polygon (that in
+\end_layout
+
+\begin_layout Standard
+// the cmp function for the point is the point with the lowest
+\end_layout
+
+\begin_layout Standard
+// x coordinate and in case of tie with the lowest y
+\end_layout
+
+\begin_layout Standard
+// coordinate).
+ We then sort the points with the radial
+\end_layout
+
+\begin_layout Standard
+// comparator based on the pivot point.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// But there is a problem with the points with the same x
+\end_layout
+
+\begin_layout Standard
+// coordinate than the pivot point, they are ordered in
+\end_layout
+
+\begin_layout Standard
+// ascending order of y coordinate, so we first find those
+\end_layout
+
+\begin_layout Standard
+// points and reverse them.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// The final step is to consider each point of the polygon,
+\end_layout
+
+\begin_layout Standard
+// add it to the convex hull and check if that addition implies
+\end_layout
+
+\begin_layout Standard
+// or not an exclusion of the previously added points
+\end_layout
+
+\begin_layout Standard
+// aplying the cross product (to see if it is a counterclockwise
+\end_layout
+
+\begin_layout Standard
+// (include) or a clockwise (exclude) turn).
+\end_layout
+
+\begin_layout Standard
+vector <Point> ConvexHull(vector <Point> T) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int j = 0, k, n = T.size(); vector <Point> U(n);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point::pivot = *min_element(T.begin(), T.end());
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+sort(T.begin(), T.end(), RadialComp);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (k = n - 2; k >= 0 && turn(T[0], T[n - 1], T[k]) == 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+--k);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+reverse((k + 1) + T.begin(), T.end());
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// Change >= for > to keep the colinear points.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (j > 1 && turn(U[j - 1], U[j - 2], T[i]) > 0) --j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+U[j++] = T[i];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+U.erase(j + U.begin(), U.end());
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return U;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Calculates the area of the given Polygon, it has to be given
+\end_layout
+
+\begin_layout Standard
+// in clockwise or counterclockwise order [MANDATORY!].
+ The
+\end_layout
+
+\begin_layout Standard
+// idea is to triangulate the polygon based on an initial point;
+\end_layout
+
+\begin_layout Standard
+// the cross product will be of the opposite sign if the area of
+\end_layout
+
+\begin_layout Standard
+// the triangle must be added or substracted to the total area
+\end_layout
+
+\begin_layout Standard
+// of the polygon.
+ At the end, the number can be negative
+\end_layout
+
+\begin_layout Standard
+// if the points were given in clockwise order so we return
+\end_layout
+
+\begin_layout Standard
+// the absolute value.
+ As we know that the cross product is
+\end_layout
+
+\begin_layout Standard
+// the area of the paralelogram formed by the vectors, then,
+\end_layout
+
+\begin_layout Standard
+// the area of the triangle is the cross product divided by
+\end_layout
+
+\begin_layout Standard
+// two.
+\end_layout
+
+\begin_layout Standard
+double Area(const vector<Point> &T) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+double area = 0.0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+//We will triangulate the polygon
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+//into triangles with points p[0],p[i],p[i+1]
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for(int i = 1; i + 1 < T.size(); i++){
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+area += (T[i] - T[0]) ^ (T[i + 1] - T[0]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return abs(area / 2.0);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Returns the point of intersection between the lines defined
+\end_layout
+
+\begin_layout Standard
+// by p, q and r, s.
+\end_layout
+
+\begin_layout Standard
+Point Intersection(const Point &p, const Point &q, 
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+const Point &r, const Point &s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Point a = q - p, b = s - r, c = Point(p ^ q, r ^ s);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return Point(Point(a.x, b.x) ^ c, 
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Point(a.y, b.y) ^ c) / (a ^ b);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// GRAPHS
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // BELLMAN FORD'S SHORTEST PATH //
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// Takes a directed graph where each edge has a weight and
+\end_layout
+
+\begin_layout Standard
+// returns the shortest path from s to any other vertex.
+ This
+\end_layout
+
+\begin_layout Standard
+// algorithm has the quality that works even if the graph has
+\end_layout
+
+\begin_layout Standard
+// negative cicles (it detects them).
+ Is useful for sparse
+\end_layout
+
+\begin_layout Standard
+// graphs due to its complexity; for dense graphs better use
+\end_layout
+
+\begin_layout Standard
+// Floyd-Warshall that gives more information for the same cost.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// PARAMETERS:
+\end_layout
+
+\begin_layout Standard
+// - deg (global): (out-)degree of each vertex
+\end_layout
+
+\begin_layout Standard
+// - adj (global): Adjacency list.
+ For each u,
+\end_layout
+
+\begin_layout Standard
+//\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+adj[u][0..deg[u]] are the neighbours.
+\end_layout
+
+\begin_layout Standard
+// - cost (global): Costs list.
+ For each u,
+\end_layout
+
+\begin_layout Standard
+// \InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ costs[u][0..deg[u]] is the cost of the edge
+\end_layout
+
+\begin_layout Standard
+// \InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ between u and adj[u][0..deg(u)].
+\end_layout
+
+\begin_layout Standard
+// - n (global): The number of vertices ([0, n-1] are
+\end_layout
+
+\begin_layout Standard
+// \InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+considered as vertices).
+\end_layout
+
+\begin_layout Standard
+// - INF (global): As its name.
+\end_layout
+
+\begin_layout Standard
+// - s: source vertex.
+\end_layout
+
+\begin_layout Standard
+// RETURNS:
+\end_layout
+
+\begin_layout Standard
+// - d[] contains the minimum path from s to any other vertex.
+\end_layout
+
+\begin_layout Standard
+// - prev[] contains the path predecessors.
+\end_layout
+
+\begin_layout Standard
+// - neg is true if the graph has a negative cycle.
+\end_layout
+
+\begin_layout Standard
+// COMPLEXITY:
+\end_layout
+
+\begin_layout Standard
+// - Slow.
+ O(V * E).
+\end_layout
+
+\begin_layout Standard
+// REQUIRES:
+\end_layout
+
+\begin_layout Standard
+// - vector
+\end_layout
+
+\begin_layout Standard
+// FIELD TESTING:
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+using namespace std;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int INF = 0X3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 1000;
+\end_layout
+
+\begin_layout Standard
+vector <int> adj[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+vector <int> cost[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int deg[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int d[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+bool neg;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void BellmanFord(int s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) { d[i] = INF; prev[i] = -1; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+d[s] = 0; neg = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n + 1; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int k = 0; k < deg[j]; ++k) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (d[adj[j][k]] > d[j] + cost[j][k]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (i >= n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+neg = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[adj[j][k]] = j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[adj[j][k]] = d[j] + cost[j][k];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // DIJKSTRA'S SHORTEST PATH //
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// Takes a directed graph where each edge has a weight and
+\end_layout
+
+\begin_layout Standard
+// returns the shortest path from s to any other vertex.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// PARAMETERS:
+\end_layout
+
+\begin_layout Standard
+// - deg (global): (out-)degree of each vertex
+\end_layout
+
+\begin_layout Standard
+// - adj (global): Adjacency list.
+ For each u,
+\end_layout
+
+\begin_layout Standard
+// adj[u][0..deg[u]] are the neighbours.
+\end_layout
+
+\begin_layout Standard
+// - cost (global): Costs list.
+ For each u,
+\end_layout
+
+\begin_layout Standard
+// costs[u][0..deg[u]] is the cost of the edge between u
+\end_layout
+
+\begin_layout Standard
+// and adj[u][0..deg(u)].
+\end_layout
+
+\begin_layout Standard
+// - n (global): The number of vertices ([0, n-1] are
+\end_layout
+
+\begin_layout Standard
+// considered as vertices).
+\end_layout
+
+\begin_layout Standard
+// - INF (global): As its name.
+\end_layout
+
+\begin_layout Standard
+// - s: source vertex.
+\end_layout
+
+\begin_layout Standard
+// RETURNS:
+\end_layout
+
+\begin_layout Standard
+// - d[] contains the minimum path from s to any other vertex.
+\end_layout
+
+\begin_layout Standard
+// - prev[] contains the path predecessors.
+\end_layout
+
+\begin_layout Standard
+// COMPLEXITY:
+\end_layout
+
+\begin_layout Standard
+// - Fast.
+ O(E * log(V)).
+\end_layout
+
+\begin_layout Standard
+// REQUIRES:
+\end_layout
+
+\begin_layout Standard
+// - vector
+\end_layout
+
+\begin_layout Standard
+// FIELD TESTING:
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+const int INF = 0X3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 1000;
+\end_layout
+
+\begin_layout Standard
+vector <int> adj[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+vector <int> cost[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int deg[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int d[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+void Dijkstra(int s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) { d[i] = INF; prev[i] = -1; }
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Heap <int> heap;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+d[s] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(s, 0);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while(!heap.Empty()) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int vertex = heap.Pop();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int dist = heap.GetValue(vertex);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int ii = 0; ii < deg[vertex]; ++ii) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int vertex2 = adj[vertex][ii], c = cost[vertex][ii];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if(d[vertex2] > d[vertex] + c) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[vertex2] = d[vertex] + c;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[vertex2] = vertex;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+heap.InsertOrModify(vertex2, d[vertex2]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // DIJKSTRA'S SHORTEST PATH //
+\end_layout
+
+\begin_layout Standard
+// //////////////////////////////
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// Takes a directed graph where each edge has a weight and
+\end_layout
+
+\begin_layout Standard
+// returns the shortest path from s to any other vertex.
+ This
+\end_layout
+
+\begin_layout Standard
+// version is better for very dense graphs since its complexity
+\end_layout
+
+\begin_layout Standard
+// is lower than the Dijkstra with heap if E = V^2.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// PARAMETERS:
+\end_layout
+
+\begin_layout Standard
+// - graph (global): Adjacency matrix.
+ The value graph[i][j] is
+\end_layout
+
+\begin_layout Standard
+// the cost of the edge between the nodes i and j.
+\end_layout
+
+\begin_layout Standard
+// - n (global): The number of vertices ([0, n-1] are considered
+\end_layout
+
+\begin_layout Standard
+// as vertices).
+\end_layout
+
+\begin_layout Standard
+// - INF (global): As its name.
+\end_layout
+
+\begin_layout Standard
+// - s: source vertex.
+\end_layout
+
+\begin_layout Standard
+// RETURNS:
+\end_layout
+
+\begin_layout Standard
+// - d[] contains the minimum path from s to any other vertex.
+\end_layout
+
+\begin_layout Standard
+// - prev[] contains the path predecessors.
+\end_layout
+
+\begin_layout Standard
+// COMPLEXITY:
+\end_layout
+
+\begin_layout Standard
+// - Fast.
+ O(E + V^2).
+\end_layout
+
+\begin_layout Standard
+// FIELD TESTING:
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+const int INF = 0X3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 1000;
+\end_layout
+
+\begin_layout Standard
+int graph[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int d[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+void Dijkstra(int s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool can[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[i] = INF; prev[i] = -1; can[i] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+d[s] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+can[s] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int h = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) if (can[j] && (h == -1 || d[j] < d[h])) h =
+ j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (h == -1) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[h] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int ii = 0; ii < n; ++ii) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int c = graph[h][ii];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (c == INF) continue;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if(d[ii] > d[h] + c) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[ii] = d[h] + c;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[ii] = h;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[ii] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// ////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // FLOYD-WARSHALL'S SHORTEST PATH //
+\end_layout
+
+\begin_layout Standard
+// ////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// Takes a directed graph where each edge has a weight and
+\end_layout
+
+\begin_layout Standard
+// returns the shortest path between all pair for vertices.
+\end_layout
+
+\begin_layout Standard
+// It is very useful if the graph is dense since will get
+\end_layout
+
+\begin_layout Standard
+// more information than Bellman-Ford in the same time.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// PARAMETERS:
+\end_layout
+
+\begin_layout Standard
+// - graph (global): Adjacency matrix.
+ The value graph[i][j]
+\end_layout
+
+\begin_layout Standard
+// is the cost of the edge between the nodes i and j.
+\end_layout
+
+\begin_layout Standard
+// - n (global): The number of vertices ([0, n-1] are
+\end_layout
+
+\begin_layout Standard
+// considered as vertices).
+\end_layout
+
+\begin_layout Standard
+// - INF (global): As its name.
+\end_layout
+
+\begin_layout Standard
+// - NO_EDGE (global): The value that specifies that there is
+\end_layout
+
+\begin_layout Standard
+// no connection between two vertex.
+\end_layout
+
+\begin_layout Standard
+// RETURNS:
+\end_layout
+
+\begin_layout Standard
+// - d[][] contains the minimum path between every pair of
+\end_layout
+
+\begin_layout Standard
+// vertices.
+\end_layout
+
+\begin_layout Standard
+// - prev[][] contains the path predecessors.
+\end_layout
+
+\begin_layout Standard
+// COMPLEXITY:
+\end_layout
+
+\begin_layout Standard
+// - Slow.
+ O(V ^ 3).
+\end_layout
+
+\begin_layout Standard
+// REQUIRES:
+\end_layout
+
+\begin_layout Standard
+// - vector
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int INF = 0X3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 1000;
+\end_layout
+
+\begin_layout Standard
+int graph[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int d[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+vector <int> path;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void FloydWarshall() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) { 
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[i][j] = graph[i][j]; prev[i][j] = i;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[i][i] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int k = 0; k < n; ++k) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (d[i][j] > d[i][k] + d[k][j]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[i][j] = d[i][k] + d[k][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[i][j] = prev[k][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void ConstructFloydShortestPath(int s, int t) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (s != t) ConstructFloydShortestPath(s, prev[s][t]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+path.push_back(t);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// /////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // FORD-FULKERSON'S MAXFLOW/MINCUT //
+\end_layout
+
+\begin_layout Standard
+// /////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// Takes a directed graph where each edge has a weight
+\end_layout
+
+\begin_layout Standard
+// (capacity) and returns the value of the maximum flow
+\end_layout
+
+\begin_layout Standard
+// that can be sent from vertex s to vertex t.
+ This value
+\end_layout
+
+\begin_layout Standard
+// is also the minimum sum of the weight of the edges
+\end_layout
+
+\begin_layout Standard
+// that have to be removed in order to disconnect s and t.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// PARAMETERS:
+\end_layout
+
+\begin_layout Standard
+// - capacity (global): Adjacency matrix.
+ The value
+\end_layout
+
+\begin_layout Standard
+// capacity[i][j] is the capacity of the edge between the
+\end_layout
+
+\begin_layout Standard
+// nodes i and j.
+\end_layout
+
+\begin_layout Standard
+// - n (global): The number of vertices ([0, n-1] are
+\end_layout
+
+\begin_layout Standard
+// considered as vertices).
+\end_layout
+
+\begin_layout Standard
+// - INF (global): As its name.
+\end_layout
+
+\begin_layout Standard
+// - s: source vertex.
+\end_layout
+
+\begin_layout Standard
+// - t: sink vertex.
+\end_layout
+
+\begin_layout Standard
+// RETURNS:
+\end_layout
+
+\begin_layout Standard
+// - max_flow[] contains the max_flow that can be send in
+\end_layout
+
+\begin_layout Standard
+// a given step between the source node and every other node.
+\end_layout
+
+\begin_layout Standard
+// - prev[] contains the path predecessors.
+\end_layout
+
+\begin_layout Standard
+// COMPLEXITY:
+\end_layout
+
+\begin_layout Standard
+// - Slow.
+ O(V * E ^ 2) As it always finds the shortest path
+\end_layout
+
+\begin_layout Standard
+// (Edmons-Karp).
+\end_layout
+
+\begin_layout Standard
+// REQUIRES:
+\end_layout
+
+\begin_layout Standard
+// - vector
+\end_layout
+
+\begin_layout Standard
+// FIELD TESTING:
+\end_layout
+
+\begin_layout Standard
+// - A Plug for Unix (PKU #1087)
+\end_layout
+
+\begin_layout Standard
+const int INF = 0X3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 500;
+\end_layout
+
+\begin_layout Standard
+int capacity[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int max_flow[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+int PFS(int s, int t) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool can[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int max_capacity = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+max_flow[i] = 0; prev[i] = -1; can[i] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+max_flow[s] = INF;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+can[s] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while(true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int h = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (can[j] && (h == -1 || max_flow[j] > max_flow[h]))
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+h = j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (h == -1) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[h] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (h == t) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+max_capacity = max_flow[h];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int ii = 0; ii < n; ++ii) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int c = capacity[h][ii];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (c == 0) continue;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (min(max_flow[h], c) > max_flow[ii]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+max_flow[ii] = min(max_flow[h], c);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[ii] = h;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[ii] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return max_capacity;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+int MaximumFlow(int s, int t) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int result = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int cap = PFS(s, t);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (cap == 0) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int where = t;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (where != s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int last = prev[where];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[last][where] -= cap;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[where][last] += cap;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+where = last;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cout << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+result += cap;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return result;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// /////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// // MINCOST-MAXFLOW //
+\end_layout
+
+\begin_layout Standard
+// /////////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const int INF = 0x3F3F3F3F;
+\end_layout
+
+\begin_layout Standard
+const int MAX_NODES = 500;
+\end_layout
+
+\begin_layout Standard
+int capacity[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int cost[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int d[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int prev[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+int n;
+\end_layout
+
+\begin_layout Standard
+int max_flow;
+\end_layout
+
+\begin_layout Standard
+// This variation of Dijkstra works with negative edges.
+\end_layout
+
+\begin_layout Standard
+// Its complexity is different but as long as we don't have
+\end_layout
+
+\begin_layout Standard
+// a table, we can keep relaxing edges.
+\end_layout
+
+\begin_layout Standard
+void Dijkstra(int s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+bool can[MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[i] = INF; prev[i] = -1; can[i] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+d[s] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+can[s] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int h = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (can[j] && (h == -1 || d[j] < d[h]))
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+h = j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (h == -1) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[h] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int ii = 0; ii < n; ++ii) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int c = cost[h][ii];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (capacity[h][ii] == 0) continue;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if(d[ii] > d[h] + c) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+d[ii] = d[h] + c;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+prev[ii] = h;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+can[ii] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+int MinCostMaximumFlow(int s, int t) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int min_cost = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+max_flow = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Dijkstra(s);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (d[t] > INF / 2) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int where = t, neck = INF;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (where != s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int last = prev[where];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+neck = min(neck, capacity[last][where]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+where = last;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+where = t;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (where != s) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int last = prev[where];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[last][where] -= neck;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[where][last] += neck;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+min_cost += cost[last][where] * neck;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+where = last;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+max_flow += neck;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return min_cost;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+class RadarGuns {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+public:
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+vector <int> getRange(vector <int> enterTimes,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+vector <int> exitTimes, int speedTime, int fineCap);
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+vector <int> RadarGuns::getRange(vector <int> enterTimes,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+vector <int> exitTimes, int speedTime, int fineCap) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+n = enterTimes.size() * 2 + 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int mid = enterTimes.size();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Always remember to set the cost[i][j] on the edges
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// that are in the graph and in the BACK EDGES of the
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// augmented graph.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[i][j] = INF; capacity[i][j] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < mid; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < mid; ++j) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (exitTimes[j] > enterTimes[i]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[i][mid + j] = 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[i][mid + j] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[mid + j][i] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (speedTime > exitTimes[j] - enterTimes[i]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int x = speedTime - (exitTimes[j] - enterTimes[i]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[i][mid + j] = min(x * x, fineCap);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// It is important!
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[mid + j][i] = -min(x * x, fineCap);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < mid; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[mid + mid][i] = 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[mid + mid][i] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[i][mid + mid] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+capacity[i + mid][mid + mid + 1] = 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[i + mid][mid + mid + 1] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cost[mid + mid + 1][i + mid] = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int temp[MAX_NODES][MAX_NODES];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) temp[i][j] = capacity[i][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+vector <int> ret(2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+ret[0] = MinCostMaximumFlow(mid + mid, mid + mid + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (max_flow < mid) return vector <int>();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j) capacity[i][j] = temp[i][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < n; ++i)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int j = 0; j < n; ++j)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (cost[i][j] != INF) cost[i][j] = -cost[i][j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+ret[1] = -MinCostMaximumFlow(mid + mid, mid + mid + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ret;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// MATHEMATICS
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Bits & Sets
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline int CountBit(T n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (n == 0) ? 0 : (1 + CountBit(n & (n - 1)));
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline bool IsSubset(T set, T subset) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (set & subset) == subset;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// If you need the empty subset, change the subset > 0 to
+\end_layout
+
+\begin_layout Standard
+// subset >= 0.
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline void IterateSubsets(T set) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int subset = set; subset > 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+subset = (subset - 1) & set) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// TODO
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline bool Contains(T set, T bit) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (set & (1 << bit)) != 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Number Theory
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Utility type used by the Extended Euclidean Algorithm.
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+struct Triple {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T d_, x_, y_;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Triple(T d, T x, T y) : d_(d), x_(x), y_(y) {}
+\end_layout
+
+\begin_layout Standard
+};
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Euclidean algorithm.
+ Calculates the Greatest Common Divisor
+\end_layout
+
+\begin_layout Standard
+// between two numbers.
+ This algorithm works on non-negative
+\end_layout
+
+\begin_layout Standard
+// integers.
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+T GreatestCommonDivisor(T a, T b) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (b == 0) ? a : GreatestCommonDivisor(b, a % b);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Extended GCD.
+ Given non-negative a and b, computes 
+\end_layout
+
+\begin_layout Standard
+// d = gcd(a, b) along with integers x and y, such that
+\end_layout
+
+\begin_layout Standard
+// d = ax + by and returns the triple (d, x, y).
+\end_layout
+
+\begin_layout Standard
+// REQUIRES: struct Triple.
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+Triple <T> ExtendedGCD(T a, T b) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if(!b) return Triple <T>(a, T(1), T(0));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Triple <T> q = ExtendedGCD(b, a % b);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return Triple <T>(q.d, q.y, q.x - a / b * q.y);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Fast powering.
+ It calculates x ^ y with a complexity of
+\end_layout
+
+\begin_layout Standard
+// O(log y).
+\end_layout
+
+\begin_layout Standard
+// USED BY: ModularInverse.
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+T FastPow(T x, T y, T mod = T(0)) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (!y) return T(1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T ret = FastPow(x, y/2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+ret = (ret * ret);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (mod) ret %= mod;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// If the power is odd we have to multiply one more time.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (y & 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+ret = (ret * x);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (mod) ret %= mod;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return ret;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Calculates the modular inverse of a number based on Fermat's
+\end_layout
+
+\begin_layout Standard
+// theorem.
+ The theorem is as follows: Suppose p is a prime
+\end_layout
+
+\begin_layout Standard
+// and k is not a multiple of p.
+ Then k ^ (p - 1) 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 1 (mod p).
+\end_layout
+
+\begin_layout Standard
+// Now, using this theorem, we know that k ^ (p - 2) * k 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+// 1 (mod p), therefore k ^ (p - 2) is the modular inverse of k.
+\end_layout
+
+\begin_layout Standard
+// REQUIRES: FastPow.
+\end_layout
+
+\begin_layout Standard
+template <class T>
+\end_layout
+
+\begin_layout Standard
+T ModularInverse(T x, T mod) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return FastPow(x, mod - 2) % mod;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Templated inlined function to factorize a number (can be int,
+\end_layout
+
+\begin_layout Standard
+// long long, etc.) The idea is to find the prime factors
+\end_layout
+
+\begin_layout Standard
+// bottom up.
+ This function has a couple of little speed
+\end_layout
+
+\begin_layout Standard
+// improvements (after 3, the primes are separated by 6 and 8
+\end_layout
+
+\begin_layout Standard
+// units, it is inlined, etc.).
+ This is the fastest we can do
+\end_layout
+
+\begin_layout Standard
+// considering that it is a generalized function.
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// If we know that a number is a perfect square, we can
+\end_layout
+
+\begin_layout Standard
+// calculate the prime factors of the square root and multiply
+\end_layout
+
+\begin_layout Standard
+// the occurrences of these factors by two (each prime factor
+\end_layout
+
+\begin_layout Standard
+// occurs twice in the square of a number).
+\end_layout
+
+\begin_layout Standard
+//
+\end_layout
+
+\begin_layout Standard
+// BE CAREFUL: If the number to factorize is 1, then it will
+\end_layout
+
+\begin_layout Standard
+// return an empty vector; this can backfire you.
+ For obvious
+\end_layout
+
+\begin_layout Standard
+// reasons, 1 is not considered as a prime factor.
+\end_layout
+
+\begin_layout Standard
+// USED BY: Phi.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline void Squeeze(vector <pair <T, int> > &M, T &n, T p) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int C = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (; n % p == 0; n /= p) ++C;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (C != 0) M.push_back(make_pair(p, C));
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+template<class T>
+\end_layout
+
+\begin_layout Standard
+inline vector <pair <T, int> > Factorize(T n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (n < 0) return Factorize(-n);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+vector <pair <T, int> > M;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (n < 2) return M;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Squeeze(M, n, (T) 2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+Squeeze(M, n, (T) 3);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+T p = 5;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (n > 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Squeeze(M, n, p);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Squeeze(M, n, p + 2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+p += 6;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (p * p > n) p = n;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return M;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Euler's Totient Function.
+\end_layout
+
+\begin_layout Standard
+// REQUIRES: Factorize.
+\end_layout
+
+\begin_layout Standard
+int Phi(int n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+vector <pair <int, int> > p;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+p = Factorize(n);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for(int i = 0; i < (int)p.size(); i++){
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+n /= p[i].first;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+n *= p[i].first - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return n;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+int main() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "Fast Pow testing..." << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "10 ^ 10 = " << FastPow<long long>(10, 10) << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "Modular Inverse testing..." << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "The inverse of 4 mod 5 is " << ModularInverse(4, 5);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "Euler Totient Function testing..." << endl;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+cout << "Phi(89) = " << Phi(89);
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Square Root
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+import java.math.BigInteger;
+\end_layout
+
+\begin_layout Standard
+import java.util.List;
+\end_layout
+
+\begin_layout Standard
+import java.util.ArrayList;
+\end_layout
+
+\begin_layout Standard
+import java.util.Scanner;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+public class SquareRoot {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Pell's Algorithm.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+static BigInteger BigSqrt(String n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger HUNDRED = new BigInteger("100");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger TWO = new BigInteger("2");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger TWENTY = new BigInteger("20");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger TEN = new BigInteger("10");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+List <String> parts = new ArrayList <String>();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = n.length(); i > 0; i -= 2)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parts.add(n.substring(Math.max(i - 2, 0), i));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger odd = BigInteger.ZERO;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger remain = BigInteger.ZERO;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger answer = BigInteger.ZERO;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = parts.size() - 1; i >= 0; --i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+odd = TWENTY.multiply(answer).add(BigInteger.ONE);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+remain = HUNDRED.multiply(remain).add(
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+new BigInteger(parts.get(i)));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger count = BigInteger.ZERO;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (remain.compareTo(odd) >= 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+count = count.add(BigInteger.ONE);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+remain = remain.subtract(odd);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+odd = odd.add(TWO);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+answer = TEN.multiply(answer).add(count);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return answer;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static BigInteger NewtonSquareRoot(BigInteger n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger act = BigInteger.ONE;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger last = BigInteger.ZERO;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BigInteger TWO = new BigInteger("2");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (act.compareTo(last) != 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+last = act;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+act = act.add(n.divide(act)).divide(TWO);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return act;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// UTILITIES
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Function to compare two floating point numbers (you can 
+\end_layout
+
+\begin_layout Standard
+// specify the epsilon).
+ The base function is used by the other
+\end_layout
+
+\begin_layout Standard
+// two utility functions, ALWAYS use this NEVER direct
+\end_layout
+
+\begin_layout Standard
+// comparison.
+ They are all inline to save the overhead of
+\end_layout
+
+\begin_layout Standard
+// calling a function.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+const double EPS = 1e-10;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+inline int cmp(double x, double y = 0, double tol = EPS) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return (x <= y + tol) ? (x + tol < y) ? -1 : 0 : 1;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+inline bool cmp_eq(double x, double y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return cmp(x, y) == 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+inline bool cmp_lt(double x, double y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return cmp(x, y) < 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+inline bool cmp_lteq(double x, double y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return cmp(x, y) <= 0;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+// Merge-Sort
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+long long swaps;
+\end_layout
+
+\begin_layout Standard
+long long array[500000];
+\end_layout
+
+\begin_layout Standard
+long long temp[500000];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+void MergeSort(int b, int e) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (e - b == 0) return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+if (e - b == 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (array[e] < array[b]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+++swaps; 
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+swap(array[e], array[b]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int m = (e + b) / 2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+MergeSort(b, m);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+MergeSort(m + 1, e);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+int i = b, j = m + 1, t = b;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (i <= m && j <= e) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (array[i] < array[j]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+temp[t] = array[i];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+++t; ++i;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+swaps += static_cast<long long>(m - i + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+temp[t] = array[j];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+++t; ++j;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (i <= m) temp[t++] = array[i++];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+while (j <= e) temp[t++] = array[j++];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+for (int k = b; k <= e; ++k) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+array[k] = temp[k];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+return;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+public class XMart {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// (a or b) is equivalent to (~a -> b) and (~b -> a).
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// For node i, its negation is node i + 1.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+//
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// p q p -> q
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// 1 1 1
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// 1 0 0
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// 0 1 1
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// 0 0 1
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static List<Integer>[] graph;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static boolean isPossible;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int index;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static Stack<Integer> stack;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int[] indexes;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int[] lowLink;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static boolean[] inStack;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static boolean[] marked;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static void TarjanFor2SAT() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+stack = new Stack<Integer>();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+index = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+indexes = new int[graph.length];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink = new int[graph.length];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+inStack = new boolean[graph.length];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+marked = new boolean[graph.length];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < graph.length; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+indexes[i] = lowLink[i] = -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < graph.length; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (marked[i]) continue;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+TarjanDFS(i);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static void TarjanDFS(int node) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+indexes[node] = index;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink[node] = index;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+++index;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+stack.push(node);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+inStack[node] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+marked[node] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (Integer suc : graph[node]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (indexes[suc] == -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+TarjanDFS(suc);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink[node] = (lowLink[suc] < lowLink[node]) ?
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink[suc] : lowLink[node];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (inStack[suc]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink[node] = (lowLink[suc] < lowLink[node]) ?
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+lowLink[suc] : lowLink[node];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (lowLink[node] == indexes[node]) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// We found the head of a SCC...
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+boolean[] SCC = new boolean[graph.length];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int act = stack.pop();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+inStack[act] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (true) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+SCC[act] = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if ((act & 1) == 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (SCC[act + 1]) isPossible = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (SCC[act - 1]) isPossible = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (act == node) break;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+act = stack.pop();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+inStack[act] = false;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+@SuppressWarnings("unchecked")
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+public static void main(String[] args) throws IOException {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+//BufferedReader reader = new BufferedReader(
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+//new InputStreamReader(System.in));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+BufferedReader reader = new BufferedReader(
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+new FileReader("xmart.in"));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int C, P;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+String[] parts = reader.readLine().split("[ ]+");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+C = Integer.parseInt(parts[0]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+P = Integer.parseInt(parts[1]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+while (C!= 0 && P != 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph = (List<Integer>[]) new List[2 * P];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < graph.length; ++i)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[i] = new ArrayList<Integer>();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < C; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parts = reader.readLine().split("[ ]+");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int p1, p2, p3, p4;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+p1 = Integer.parseInt(parts[0]) - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+p2 = Integer.parseInt(parts[1]) - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+p3 = Integer.parseInt(parts[2]) - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+p4 = Integer.parseInt(parts[3]) - 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (p1 != -1 && p2 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p1 + 1].add(2 * p2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p2 + 1].add(2 * p1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (p1 == -1 && p2 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p2 + 1].add(2 * p2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (p2 == -1 && p1 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p1 + 1].add(2 * p1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (p3 != -1 && p4 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p3].add(2 * p4 + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p4].add(2 * p3 + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (p3 == -1 && p4 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p4].add(2 * p4 + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (p4 == -1 && p3 != -1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+graph[2 * p3].add(2 * p3 + 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+isPossible = true;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+TarjanFor2SAT();
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (isPossible) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+System.out.println("yes");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+System.out.println("no");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parts = reader.readLine().split("[ ]+");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+C = Integer.parseInt(parts[0]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+P = Integer.parseInt(parts[1]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+import java.awt.geom.Line2D;
+\end_layout
+
+\begin_layout Standard
+public class Geometry {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static final double EPS = 1e-10;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int cmp(double x, double y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return (x <= y + EPS) ? (x + EPS < y) ? -1 : 0 : 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+// Immutable Point Class.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static class Point implements Comparable<Point> {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public double x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public double y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point(double x, double y) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.x = x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.y = y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point() {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.x = 0.0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.y = 0.0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public double dotProduct(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return this.x * o.x + this.y * o.y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public double crossProduct(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return this.x * o.y - this.y * o.x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point add(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(this.x + o.x, this.y + o.y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point substract(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(this.x - o.x, this.y - o.y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point multiply(double m) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(this.x * m, this.y * m);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Point divide(double m) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(this.x / m, this.y / m);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+@Override
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int compareTo(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (this.x < o.x) return -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (this.x > o.x) return 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (this.y < o.y) return -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (this.y > o.y) return 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// Euclidean distance between two points;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double distance(Point o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double d1 = x - o.x, d2 = y - o.y;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Math.sqrt(d1 * d1 + d2 * d2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static double angle(Point p, Point q, Point r) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Point u = p.substract(r), v = q.substract(r);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return Math.atan2(u.crossProduct(v), u.dotProduct(v));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int turn(Point p, Point q, Point r) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return cmp((p.substract(r)).crossProduct(
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+q.substract(r)), 0.0);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static boolean between(Point p, Point q, Point r) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return turn(p, r, q) == 0 &&
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+cmp((p.substract(r)).dotProduct(q.substract(r)),
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+0.0) <= 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static int inPolygon(Point p, Point[] polygon,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int polygonSize) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double a = 0; int N = polygonSize;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (between(polygon[i], polygon[(i + 1) % N], p))
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+a += angle(polygon[i], polygon[(i + 1) % N], p);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return (cmp(a, 0.0) == 0) ? 0 : 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static Point GetIntersection(Line2D.Double l1,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Line2D.Double l2) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double A1 = l1.y2 - l1.y1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double B1 = l1.x1 - l1.x2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double C1 = A1 * l1.x1 + B1 * l1.y1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double A2 = l2.y2 - l2.y1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double B2 = l2.x1 - l2.x2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double C2 = A2 * l2.x1 + B2 * l2.y1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double det = A1*B2 - A2*B1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if(det == 0){
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// Lines are parallel, check if they are on the same line.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double m1 = A1 / B1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double m2 = A2 / B2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// Check whether their slopes are the same or not,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+// or if they are vertical.
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (cmp(m1, m2) == 0 || (B1 == 0 && B2 == 0)) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if ((l1.x1 == l2.x1 && l1.y1 == l2.y1) ||
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+(l1.x1 == l2.x2 && l1.y1 == l2.y2))
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(l1.x1, l1.y1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if ((l1.x2 == l2.x1 && l1.y2 == l2.y1) ||
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+(l1.x2 == l2.x2 && l1.y2 == l2.y2))
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(l1.x2, l1.y2);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return null;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double x = (B2*C1 - B1*C2) / det;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+double y = (A1*C2 - A2*C1) / det;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return new Point(x, y);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+
+\end_layout
+
+\begin_layout Standard
+///////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+// Segment Tree for Squares Area //
+\end_layout
+
+\begin_layout Standard
+///////////////////////////////////
+\end_layout
+
+\begin_layout Standard
+public class Squares {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static class Segment implements Comparable<Segment> {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int y1, y2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public boolean open;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public Segment(int x, int y1, int y2, boolean open) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.x = x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.y1 = y1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.y2 = y2;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.open = open;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+@Override
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int compareTo(Segment o) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+return this.x - o.x;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+private static class SegmentTree {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public static int SIZE = 1 << 17;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int balance;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public int val;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public SegmentTree left;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public SegmentTree right;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public SegmentTree(int size) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.balance = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (size == 1) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.val = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.left = new SegmentTree(size >> 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.right = new SegmentTree(size >> 1);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.val = this.left.val + this.right.val;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+public void add(int y1, int y2, int l, int r, int d) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+//System.out.println(y1 + " " + y2 + " " + l + " " + r);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int mid = (r + l) >> 1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (l >= y1 && r <= y2) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.balance += d;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (y1 >= mid) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.right.add(y1, y2, mid, r, d);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (mid >= y2) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.left.add(y1, y2, l, mid, d);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.left.add(y1, y2, l, mid, d);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.right.add(y1, y2, mid, r, d);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+if (this.balance > 0) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.val = r - l;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else if (r - l > 1) { // To avoid NullPointerException
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.val = this.left.val + this.right.val;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+} else {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+this.val = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+public static void main(String[] args)
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+throws FileNotFoundException {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+System.setIn(new FileInputStream("squares.in"));
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Scanner reader = new Scanner(System.in);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int cases = Integer.parseInt(reader.nextLine());
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int c = 0; c < cases; ++c) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int squares = Integer.parseInt(reader.nextLine());
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Segment[] segs = new Segment[squares * 2];
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+String[] parts;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int n = 0; n < squares; ++n) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int x, y, l;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+parts = reader.nextLine().split("[ ]+");
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+x = Integer.parseInt(parts[0]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+y = Integer.parseInt(parts[1]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+l = Integer.parseInt(parts[2]);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+segs[2 * n] = new Segment(x, y, y + l, true);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+segs[2 * n + 1] = new Segment(x + l, y, y + l, false);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+Arrays.sort(segs);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+SegmentTree tree = new SegmentTree(SegmentTree.SIZE);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int res = 0;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+for (int i = 0; i < segs.length - 1; ++i) {
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+int d = (segs[i].open) ? +1 : -1;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+tree.add(segs[i].y1, segs[i].y2, 0,
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+SegmentTree.SIZE, d);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+res += (segs[i + 1].x - segs[i].x) * tree.val;
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+System.out.println(res);
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+\InsetSpace ~
+\InsetSpace ~
+}
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\end_body
+\end_document

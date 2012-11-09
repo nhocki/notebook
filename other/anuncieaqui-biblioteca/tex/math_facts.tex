@@ -1,0 +1,170 @@
+    \subsection{Prime counting function ($\pi(x)$)} The prime counting function is asymptotic to $\frac{x}{\log x}$, by the prime number theorem.
+
+      \ 
+
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+          x&10&$10^2$&$10^3$&$10^4$&$10^5$&$10^6$&$10^7$&$10^8$\\ \hline
+          $\pi(x)$&4&25&168&1.229&9.592&78.498&664.579&5.761.455\\ \hline
+      \end{tabular}
+
+    \subsection{Partition function} The partition function $p(x)$ counts show many ways there are to write the integer $x$ as a sum of integers.
+
+      \
+
+      \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        x&36&37&38&39&40&41&42 \\ \hline
+        p(x)&17.977&21.637&26.015&31.185&37.338&44.583&53.174 \\ \hline\hline
+        x&43&44&45&46&47&100& \\ \hline
+        p(x)&63.261&75.175&89.134&105.558&125.754&190.569.292& \\ \hline
+      \end{tabular}
+
+    \subsection{Catalan numbers} Catalan numbers are defined by the recurrence:
+      \begin{equation*}
+        C_{n+1} = \sum_{i=0}^nC_iC_{n-i}
+      \end{equation*}
+
+      A closed formula for Catalan numbers is:
+      \begin{equation*}
+        C_n = \frac{1}{n+1}\binom{2n}{n} = \binom{2n}{n} - \binom{2n}{n+1}
+      \end{equation*}
+
+    \subsection{Stirling numbers of the first kind} These are the number of permutations of $I_n$ with exactly $k$ disjoint cycles. They obey the recurrence:
+      \begin{equation*}
+        \stirlingfirst{n}{k} = (n-1)\stirlingfirst{n-1}{k} + \stirlingfirst{n-1}{k-1}
+      \end{equation*}
+
+    \subsection{Stirling numbers of the second kind} These are the number of ways to partition $I_n$ into exactly $k$ sets. They obey the recurrence:
+      \begin{equation*}
+        \stirlingsecond{n}{k} = k\stirlingsecond{n-1}{k} + \stirlingsecond{n-1}{k-1}
+      \end{equation*}
+
+      A ``closed'' formula for it is:
+      \begin{equation*}
+        \stirlingsecond{n}{k} = \frac{1}{k!}\sum_{j=0}^k (-1)^{k-j} \binom{k}{j} j^n
+      \end{equation*}
+
+      \subsection{Bell numbers} These count the number of ways to partition $I_n$ into subsets. They obey the recurrence:
+
+      \begin{equation*}
+        \mathcal{B}_{n+1} = \sum_{k=0}^n \binom{n}{k} \mathcal{B}_k
+      \end{equation*}
+
+      \
+
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        x&5&6&7&8&9&10&11&12 \\ \hline
+        $\mathcal{B}_x$&52&203&877&4.140&21.147&115.975&678.570&4.213.597 \\ \hline
+      \end{tabular}
+
+
+    \subsection{Turán's theorem} No graph with $n$ vertices that is $K_{r+1}$-free can have more edges than the Turán graph: A $k$-partite complete graph with sets of size as equal as possible.
+
+    \subsection{Generating functions}
+      A list of generating functions for useful sequences:
+
+      \ 
+
+      \begin{tabular}{|c|c|}
+        \hline
+        $(1,1,1,1,1,1,\ldots)$ & $\frac{1}{1-z}$ \\ \hline
+        $(1,-1,1,-1,1,-1,\ldots)$ & $\frac{1}{1+z}$ \\ \hline
+        $(1,0,1,0,1,0,\ldots)$ & $\frac{1}{1-z^2}$ \\ \hline
+        $(1,0,\ldots,0,1,0,1,0,\ldots,0,1,0,\ldots)$ & $\frac{1}{1-z^2}$ \\ \hline
+        $(1,2,3,4,5,6,\ldots)$ & $\frac{1}{(1-z)^2}$ \\ \hline
+        $(1,\binom{m+1}{m},\binom{m+2}{m},\binom{m+3}{m},\ldots)$ & $\frac{1}{(1-z)^{m+1}}$ \\ \hline
+        $(1,c,\binom{c+1}{2},\binom{c+2}{3},\ldots)$ & $\frac{1}{(1-z)^c}$ \\ \hline
+        $(1,c,c^2, c^3, \ldots)$ & $\frac{1}{1-cz}$ \\ \hline
+        $(0,1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\ldots)$ & $\ln \frac{1}{1-z}$ \\ \hline
+      \end{tabular}
+
+      \ 
+
+      A neat manipulation trick is:
+      \begin{equation*}
+        \frac{1}{1-z}G(z) = \sum_{n}\sum_{k\leq n}g_kz^n
+      \end{equation*}
+
+    \subsection{Polyominoes} How many free (rotation, reflection), one-sided (rotation) and fixed $n$-ominoes are there?
+
+      \ 
+
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        n&3&4&5&6&7&8&9&10 \\ \hline
+        free&2&5&12&35&108&369&1.285&4.655 \\ \hline
+        one-sided&2&7&18&60&196&704&2.500&9.189 \\ \hline
+        fixed&6&19&63&216&760&2.725&9.910&36.446 \\ \hline
+      \end{tabular}
+
+    \subsection{The twelvefold way (from Stanley)} How many functions $f \colon N \rightarrow X$ are there?
+
+      \ 
+
+      \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $N$ & $X$ & Any $f$ & Injective & Surjective \\ \hline
+        dist. & dist. & $x^n$ & $(x)_n$ & $x! \stirlingsecond{n}{x}$ \\ \hline
+        indist. & dist. & $\binom{x+n-1}{n}$ & $\binom{x}{n}$ & $\binom{n-1}{n-x}$ \\ \hline
+        dist. & indist. & $\stirlingsecond{n}{1} + \ldots + \stirlingsecond{n}{x}$ & $[n \leq x]$ & $\stirlingsecond{n}{k}$ \\ \hline
+        indist. & indist. & $p_1(n) + \ldots p_x(n)$ & $[n \leq x]$ & $p_x(n)$ \\ \hline
+      \end{tabular}
+
+      \ 
+
+      Where $\binom{a}{b} = \frac{1}{b!}(a)_b $ and $p_x(n)$ is the number of ways to partition the integer $n$ using $x$ summands.
+
+    \subsection{Common integral substitutions} And finally, a list of common substitutions:
+
+      \ 
+
+      \begin{tabular}{|c|c|c|}
+        \hline
+        $\int F(\sqrt{ax + b}) dx$ & $u = \sqrt{ax + b}$ & $\frac{2}{a} \int u F(u) du$ \\ \hline
+        $\int F(\sqrt{a^2 - x^2}) dx$ & $x = a \sin u$ & $a \int F(a \cos u) \cos u du$ \\ \hline
+        $\int F(\sqrt{x^2 + a^2}) dx$ & $x = a \tan u$ & $a \int F(a \sec u) \sec^2 u du$ \\ \hline
+        $\int F(\sqrt{x^2 - a^2}) dx$ & $x = a \sec u$ & $a \int F(a \tan u) \sec u \tan u du$ \\ \hline
+        $\int F(e^{ax}) dx$ & $u = e^{ax}$ & $\frac{1}{a} \int \frac{F(u)}{u} du$ \\ \hline
+        $\int F(\ln x) dx$ & $u = \ln x$ & $\int F(u) e^u du$ \\ \hline
+      \end{tabular}
+
+    \subsection{Table of non-trigonometric integrals}
+      Some useful integrals are:
+
+      \ 
+      
+      \begin{tabular}{|c|c|}
+        \hline
+        $\int \frac{dx}{x^2 + a^2}$ & $\frac{1}{a} \arctan \frac{x}{a}$ \\ \hline
+        $\int \frac{dx}{x^2 - a^2}$ & $\frac{1}{2a} \ln \frac{x - a}{x + a}$ \\ \hline
+        $\int \frac{dx}{a^2 - x^2}$ & $\frac{1}{2a} \ln \frac{a + x}{a - x}$ \\ \hline
+        $\int \frac{dx}{\sqrt{a^2 - x^2}}$ & $\arcsin \frac{x}{a}$ \\ \hline
+        $\int \frac{dx}{\sqrt{x^2 - a^2}}$ & $\ln \left(u + \sqrt{x^2 - a^2}\right)$ \\ \hline
+        $\int \frac{dx}{x \sqrt{x^2 - a^2}}$ & $\frac{1}{a} \text{arcsec} \left| \frac{u}{a} \right|$ \\ \hline
+        $\int \frac{dx}{x \sqrt{x^2 + a^2}}$ & $-\frac{1}{a} \ln \left( \frac{a + \sqrt{x^2 + a^2}}{x} \right)$ \\ \hline
+        $\int \frac{dx}{x \sqrt{a^2 + x^2}}$ & $-\frac{1}{a} \ln \left( \frac{a + \sqrt{a^2 - x^2}}{x} \right)$ \\ \hline
+      \end{tabular}
+
+    \subsection{Table of trigonometric integrals}
+      A list of common and not-so-common trigonometric integrals:
+
+      \ 
+
+      \begin{tabular}{|c|c|}
+        \hline
+        $\int \tan x dx$ & $-\ln |\cos x|$ \\ \hline
+        $\int \cot x dx$ & $\ln |\sin x|$ \\ \hline
+        $\int \sec x dx$ & $\ln |\sec x + \tan x|$ \\ \hline
+        $\int \csc x dx$ & $\ln |\csc x - \cot x|$ \\ \hline
+        $\int \sec^2 x dx$ & $\tan x$ \\ \hline
+        $\int \csc^2 x dx$ & $\cot x$ \\ \hline
+        $\int \sin^n x dx$ & $\frac{-\sin^{n-1} x \cos x}{n} + \frac{n-1}{n}\int \sin^{n-2}x dx$ \\ \hline
+        $\int \cos^n x dx$ & $\frac{\cos^{n-1} x \sin x}{n} + \frac{n-1}{n}\int \cos^{n-2}x dx$ \\ \hline
+        $\int \arcsin x dx$ & $x \arcsin x + \sqrt{1 - x^2}$ \\ \hline
+        $\int \arccos x dx$ & $x \arccos x - \sqrt{1 - x^2}$ \\ \hline
+        $\int \arctan x dx$ & $x \arctan x - \frac{1}{2} \ln |1 - x^2|$ \\ \hline
+      \end{tabular}
+
+    \subsection{Centroid of a polygon} The x coordinate of the centroid of a polygon is given by $\frac{1}{3A} \sum_{i = 0}^{n-1}(x_i+x_{i+1})(x_iy_{i+1} - x_{i+1}y_i)$, where $A$ is twice the signed area of the polygon.

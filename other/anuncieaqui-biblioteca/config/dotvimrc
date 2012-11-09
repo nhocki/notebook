@@ -1,0 +1,3 @@
+syn on
+set nocp number ai si ts=4 sts=4 sw=4
+ab #i #include

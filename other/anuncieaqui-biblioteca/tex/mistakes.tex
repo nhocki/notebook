@@ -1,0 +1,35 @@
+      General strategy hints:
+      \begin{enumerate}
+        \item Everyone should have read every problem by the end of the second hour of competition.
+        \item \textbf{In the last hour, only one question should be attempted at once.}
+        \item Always use vectors instead of arrays in the single dimensional case. Use vectors instead of arrays in the bidimensional case if the outermost dimension is not too big. This allows for better debugging.
+      \end{enumerate}
+
+      When thinking (before coding):
+      \begin{enumerate}
+        \item \textbf{Be organized!}
+        \item Don't touch the computer unless the solution is done, including implementation details: avoid thinking too much at the computer. \textbf{Time spent on paper detailing a solution is time well spent.}
+        \item A corollary to the above: \textbf{Don't touch the computer if you doubt your idea}.
+      \end{enumerate}
+
+      In case you have no solution ideas:
+      \begin{enumerate}
+        \item (Include tricks from Pólya here)
+      \end{enumerate}
+
+      In case of Wrong Answer:
+      \begin{enumerate}
+        \item Make sure the algorithm is correct (i.e. \textbf{sketch a proof of correctness}) as soon as possible. Take your time and check it carefully. \textbf{If you're sure the idea is correct, make sure you don't second-guess it} when checking for bugs, even if an implementation bug is nowhere to be found.
+        \item If the code uses vectors (c.f. general strategy hints), add \#define \_GLIBCXX\_DEBUG at the very beginning of the source code and submit it again. A runtime error means out-of-bounds array access or other STL misuse.
+        \item Debug on paper, and don't go back to the computer for every bug you find: \textbf{check the whole solution at least once more after finding each new bug.}
+        \item Think of tricky test cases.
+        \item Read the problem again. For every constraint found, check the printed source code.
+        \item If you can't find any bug in five minutes, \textbf{go to the bathroom}. If you still can't find the bug, \textbf{go to another problem and come back to the wrong solution later}. Debugging a single program for too long leads to finding a lot of false bugs and makes it easy to overlook simple mistakes.
+      \end{enumerate}
+
+      In case of Runtime Error:
+      \begin{enumerate}
+        \item Check divisions and modulo operations.
+        \item Check array indices (both in declarations and in accesses).
+        \item Check for infinite recursion.
+      \end{enumerate}

@@ -1,0 +1,123 @@
+\documentclass[a4paper]{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage[pdftex]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{multicol}
+
+\lstset{language=C++}
+\lstset{columns=fullflexible}
+\lstset{basicstyle=\scriptsize\ttfamily}
+\lstset{showspaces=false}
+
+\geometry{landscape}
+\setlength{\topmargin}{-0.25in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\columnsep}{1in}
+\setlength{\columnseprule}{0.2pt}
+\textwidth 9.5in
+
+\pagestyle{fancy}
+\lhead{Universidade Federal de Sergipe}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\newcommand\lsiting[4]{
+  \begin{multicols}{2}
+    [\subsection{#2}{Hash: \input{#3/.#4.hash}}\ ]
+    \lstinputlisting[language=#1]{#3/#4}
+  \end{multicols}
+}
+
+\newcommand{\stirlingfirst}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\stirlingsecond}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+
+\begin{document}
+  \thispagestyle{fancy}
+  \begin{center}
+    \Huge\textsc{ACM ICPC Team Reference Documentation}
+
+    \ 
+ 
+    \huge Team Anuncie Aqui \\ Universidade Federal de Sergipe
+
+    \ 
+
+  \end{center}
+
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+  \section{Configuration files and scripts}
+
+	\begin{itemize}
+		\item Arquivos de configuração do \texttt{emacs} e \texttt{vim}.
+		\item Script para calcular o hash de código digitado.
+		\item Template de solução com todos os includes.
+	\end{itemize}
+
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+  \section{Graph algorithms}
+    \subsection{Tarjan's SCC algorithm}
+    \subsection{Dinic's maximum flow algorithm}
+    \subsection{Successive shortest paths mincost maxflow algorithm}
+    \subsection{Gabow's general matching algorithm}
+
+  \section{Math}
+    \subsection{Fractions}
+    \subsection{Chinese remainder theorem}
+    \subsection{Longest increasing subsequence}
+    \subsection{Simplex (Warsaw University)}
+    \subsection{Romberg's method}
+    \subsection{Floyd's cycle detection algorithm}
+    \subsection{Pollard's rho algorithm}
+    \subsection{Miller-Rabin's algorithm}
+    \subsection{Karatsuba's algorithm}
+    \subsection{Polynomials (PUC-Rio)}
+
+  \section{Geometry}
+    \subsection{Point class}
+    \subsection{Intersection primitives}
+    \subsection{Polygon primitives}
+    \subsection{Miscellaneous primitives}
+    \subsection{Smallest enclosing circle}
+    \subsection{Convex hull}
+    \subsection{Closest pair of points}
+    \subsection{Kd-tree}
+    \subsection{Range tree}
+
+  \section{Data structures}
+    \subsection{Treap}
+    \subsection{Heap}
+    \subsection{Big numbers (PUC-Rio)}
+
+  \section{String algorithms}
+    \subsection{Kärkkäinen-Sanders' suffix array algorithm}
+    \subsection{Morris-Pratt's algorithm}
+    \subsection{Aho-Corasick's algorithm (UFPE)}
+
+  \enlargethispage*{\baselineskip}
+  \pagebreak
+
+  \enlargethispage*{\baselineskip}
+  \begin{center}
+    \Huge\textsc{ACM ICPC Team Reference Documentation - Contents}
+
+    \vspace{0.35cm}
+
+    \huge Team Anuncie Aqui \\ Universidade Federal de Sergipe
+
+    \vspace{0.35cm}
+
+  \end{center}
+
+  \begin{multicols}{2}
+    \tableofcontents
+  \end{multicols}
+\end{document}

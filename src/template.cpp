@@ -1,3 +1,4 @@
+#define _GLIBCXX_DEBUG
 using namespace std;
 #include <algorithm>
 #include <iostream>

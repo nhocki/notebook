@@ -383,6 +383,17 @@ las siguientes operaciones en $O(\lg n)$:
 
 \codigofuente{./src/strings/dynamic_hashing.cpp}
 
+\subsection{Mínima rotación lexicográfica de una string}
+
+\small
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{SPOJ} - MINMOVE - Minimum Rotations
+\end{itemize}
+\normalsize
+
+\codigofuente{./src/strings/minimum_rotation.cpp}
+
 \section{Geometría}
 
 \subsection{Identidades trigonométricas}
@@ -391,6 +402,73 @@ $$ \sin(\alpha \pm \beta) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta $$
 $$ \cos(\alpha \pm \beta) = \cos \alpha \cos \beta \mp \sin \alpha \sin \beta $$
 $$ \tan(\alpha \pm \beta) = \frac{\tan \alpha \pm \tan \beta}{1 \mp \tan \alpha \tan \beta} $$
 
+\subsection{Triángulos}
+
+\subsubsection{Circuncentro, incentro, baricentro y ortocentro}
+
+\begin{itemize}
+  \item El circuncentro (círculo que contiene el tríangulo) es el punto de intersección de las mediatrices (recta perpendicular al lado en su punto medio).
+
+  \begin{center}
+    \includegraphics[width=50mm]{./pics/circumcenter.png}
+  \end{center}
+
+  \item El baricentro (centro de gravedad) es el punto de intersección de las medianas (recta de un vértice al punto medio del lado opuesto).
+
+  \begin{center}
+    \includegraphics[width=50mm]{./pics/barycenter.png}
+  \end{center}
+
+  \item El incentro (centro del círculo inscrito) es el punto de intersección de las bisectrices (recta que divide el ángulo en dos ángulos iguales).
+
+  \begin{center}
+    \includegraphics[width=50mm]{./pics/incenter.png}
+  \end{center}
+
+  \item El ortocentro es el punto donde se cortan las tres alturas (recta desde un vértice y perpendicular al lado opuesto). El ortocentro se encuentra dentro del triángulo si éste es acutángulo, coincide con el vértice del ángulo recto si es rectángulo, y se halla fuera del triángulo si es obtusángulo.
+  
+  \begin{center}
+    \includegraphics[width=50mm]{./pics/orthocenter.png}
+  \end{center}
+\end{itemize}
+
+\subsubsection{Centro del círculo que pasa por 3 puntos (circuncentro)}
+\small
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{Live Archive} - 4807 - Cocircular Points
+\end{itemize}
+\normalsize
+
+\codigofuente{./src/geometria/circle_through_3_points.cpp}
+
+\subsubsection{Ley del seno y ley del coseno}
+
+\begin{center}
+  \includegraphics[width=70mm]{./pics/law_of_sines.png}
+\end{center}
+
+Sean $a$, $b$ y $c$ las longitudes de los lados de un tríangulo con ángulos opuestos $A$, $B$  y $C$.
+La ley del seno dice:
+
+$$
+\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C} = 2R
+$$
+
+donde $R$ es el radio del circuncírculo.
+
+Otros resultados son:
+
+$$ a(\sin B - \sin C) + b(\sin C - \sin A) + c(\sin A - \sin B) = 0 $$
+$$a = b \cos C + c \cos B$$.
+
+La ley del coseno:
+
+$$ \cos A = \dfrac{c^2 + b^2 - a^2}{2bc} $$
+
+y la ley de tangentes:
+
+$$ \dfrac{a + b}{a - b} = \dfrac{  \tan [\frac{1}{2}(A + B)] }{  \tan [\frac{1}{2}(A - B)]  }. $$
 
 \subsection{Área de un polígono}
 Si P es un polígono simple (no se intersecta a sí mismo) su área está dada por:
@@ -475,15 +553,6 @@ La función \verb!point_in_box! es la misma que en \ref{hallar_interseccion_segm
 
 \codigofuente{./src/geometria/check_segment_intersection.cpp}
 
-\subsection{Centro del círculo que pasa por 3 puntos}
-\small
-\textbf{Field-testing:}
-\begin{itemize}
-\item \emph{Live Archive} - 4807 - Cocircular Points
-\end{itemize}
-\normalsize
-
-\codigofuente{./src/geometria/circle_through_3_points.cpp}
 
 \subsection{Proyección de un vector en otro}
 
@@ -610,6 +679,59 @@ Necesita también el código de la unión de rectángulos (sección \ref{area_un
 
 \codigofuente{./src/geometria/parallelepiped_union_volume.cpp}
 
+\subsection{Mínima distancia entre dos puntos en la superficie de la Tierra}
+\small
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{UVa} - 535 - Globetrotter
+\end{itemize}
+\normalsize
+
+\codigofuente{./src/geometria/great_circle_distance.cpp}
+
+\subsection{Distancias más cortas en 3D (punto a segmento, segmento a segmento y punto a triángulo)}
+\small
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{UVa} - 11836 - Star War
+\end{itemize}
+\normalsize
+
+\codigofuente{./src/geometria/shortest_distances_in_3d.cpp}
+
+\subsection{Punto más cercano de aproximación}
+
+Supongamos que en el tiempo $t = 0$ el avión 1 está en $P_0$ y el avión 2 está en $Q_0$ 
+y sus vectores de velocidad por unidad de tiempo son $\vec{u}$ y $\vec{v}$ respectivamente.
+
+Las posiciones de cada avión en el tiempo $t$ están dadas por $P(t) = P_0 + t \vec{u}$ y
+$Q(t) = Q_0 + t \vec{v}$.
+
+Llamemos $\vec{w_0} = P_0 - Q_0$. Entonces el instante de tiempo en que los dos aviones están lo más cerca posible está
+dado por:
+
+$$
+t_c = \dfrac{-\vec{w_0} \cdot (\vec{u} - \vec{v}) }{ |\vec{u} - \vec{v}|^2 }
+$$
+
+siempre y cuando $|\vec{u} - \vec{v}|$ no sea 0. Si $|\vec{u} - \vec{v}| = 0$, los
+dos aviones viajan en la misma dirección a la misma velocidad y siempre van a estar
+a la misma distancia, entonces se puede simplemente usar $t_c = 0$.
+
+Cuando $t_c < 0$, los aviones ya estuvieron lo más cerca posible en el pasado y 
+se están alejando cada vez más a medida que avanzan.
+
+\subsection{Círculo más pequeño que envuelve una lista de puntos}
+\small
+\textbf{Field-testing:}
+\begin{itemize}
+\item \emph{SPOJ} - ALIENS - Aliens
+\end{itemize}
+\normalsize
+
+\codigofuente{./src/geometria/minimum_enclosing_circle.cpp}
+
+
 % ---------------------------------------------------------------
 \section{Estructuras de datos}
 \subsection{Árboles de Fenwick ó Binary indexed trees}
@@ -646,7 +768,7 @@ Por ejemplo, si $n = 7$ y $k = 3$, el orden en que se eliminan las personas es 2
 
 \codigofuente{./src/misc/josephus.cpp}
 
-\subsection{Distancia más corta para un caballo en un tablero infinito}
+\subsection{Distancia más corta para un caballo en un tablero de ajedrez infinito}
 
 \codigofuente{./src/misc/knight_distance.cpp}
 

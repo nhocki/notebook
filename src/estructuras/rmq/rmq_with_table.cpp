@@ -34,7 +34,8 @@ namespace RMQ {
                 p[i][j] = p[i][j - 1];
                 int length = 1 << (j - 1);
                 if (i + length < N) {
-                    p[i][j] = better(p[i][j - 1], p[i + length][j - 1]);
+                    p[i][j] = better(p[i][j - 1],
+                                     p[i + length][j - 1]);
                 }
             }
         }

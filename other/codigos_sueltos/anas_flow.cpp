@@ -1,28 +1,5 @@
+#include ...
 using namespace std;
-#include <algorithm>
-#include <iostream>
-#include <iterator>
-#include <numeric>
-#include <sstream>
-#include <fstream>
-#include <cassert>
-#include <climits>
-#include <cstdlib>
-#include <cstring>
-#include <string>
-#include <cstdio>
-#include <vector>
-#include <cmath>
-#include <queue>
-#include <deque>
-#include <stack>
-#include <list>
-#include <map>
-#include <set>
-
-#define foreach(x, v) for (typeof (v).begin() x=(v).begin(); x !=(v).end(); ++x)
-#define For(i, a, b) for (int i=(a); i<(b); ++i)
-#define D(x) cout << #x " is " << x << endl
 
 const int MAXN = 105;
 int g[2 * MAXN][2 * MAXN]; // 0 source, n+m+1 sink
@@ -49,7 +26,6 @@ int max_flow(int s, int t){
     
     while (true){
         // Find path s to t
-        
         for (int i = s; i <= t; i++)
             prev[i] = -1;
             
@@ -69,7 +45,6 @@ int max_flow(int s, int t){
         if (prev[t] == -1) break;
 
         // Find bottlneck
-        
         int curr = t;
         int bottleneck = 1 << 30;
         while (curr != s){
@@ -78,7 +53,6 @@ int max_flow(int s, int t){
         }
         
         // Pump
-        
         curr = t;
         while (curr != s){
             flow[prev[curr]][curr] += bottleneck;
@@ -97,7 +71,6 @@ int max_flow(int s, int t){
 int main(){
     int m, n, sec, vel;
     while (cin >> n >> m >> sec >> vel){
-        
         int s = 0;
         int t = n + m + 1;
         
@@ -117,23 +90,12 @@ int main(){
             holes[i] = make_pair(x, y);
             g[i + 1 + n][t] = 1;
         }
-        
         double max_dist = sec * vel;
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++)
                 if (canReach(i, j, max_dist)) {
                     g[i + 1][n + 1 + j] = 1;
                 }
-
-        // for (int i = 0; i <= t; i++){
-        //     for (int j = 0; j <= t; j++){
-        //         printf("%d ", g[i][j]);
-        //     }
-        //     puts("");
-        // }
-        
-        cout << n - max_flow(s, t) << endl;
-        
+        cout << n - max_flow(s, t) << endl;        
     }
-
 }

@@ -20,10 +20,12 @@ int d[MAXN], low[MAXN], scc[MAXN];
 bool stacked[MAXN];
 stack<int> s;
 int ticks, current_scc;
+
 void tarjan(int u){
   d[u] = low[u] = ticks++;
   s.push(u);
   stacked[u] = true;
+
   const vector<int> &out = g[u];
   for (int k=0, m=out.size(); k<m; ++k){
     const int &v = out[k];

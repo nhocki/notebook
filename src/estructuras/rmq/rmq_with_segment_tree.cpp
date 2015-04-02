@@ -43,5 +43,20 @@ namespace SegmentTree {
         int b = get(2*u+2, m+1, r, m+1, q);
         return better(a, b);
     }
+
+    // Update the tree by setting the element `what` at position
+    // `at`. Height is modified accordingly.
+    void set(int u, int l, int r, int at, int what) {
+        assert(l <= at and at <= r);
+        if (l == at and at == r) { // leaf
+            height[at] = what;
+            assert(tree[u] == at);
+        } else {
+            int m = (l + r) / 2;
+            if (at <= m)  set(2*u+1, l, m, at, what);
+            if (m + 1 <= at) set(2*u+2, m+1, r, at, what);
+            tree[u] = better(tree[2*u+1], tree[2*u+2]);
+        }
+    }
 };
 

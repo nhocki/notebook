@@ -83,7 +83,7 @@ void test_insert() {
         sort(a.begin(), a.end());
         assert( extract(root) == a );
     }
-    
+
     int repeated = a[rand() % a.size()];
     for (int i = 0; i < 10; ++i) {
         root = insert(root, new Node(repeated));
@@ -117,11 +117,24 @@ void test_find() {
     }
 }
 
+void test_find_kth() {
+    puts("testing find_kth...");
+    sort(a.begin(), a.end());
+    for (int i = 0; i < a.size(); ++i) {
+        Node * node = find_kth(root, i);
+        assert(node != null);
+        assert(node->x == a[i]);
+    }
+    for (int k = a.back() + 1; k < a.back() + 1 + 10; ++k) {
+        assert( find_kth(root, k) == null );
+    }
+}
+
 void test_sum() {
     puts("testing sum...");
     for (int i = 0; i < 10; ++i) {
         int x = a[rand() % a.size()];
-        
+
         long long brute_sum = 0;
         for (int i = 0; i < a.size(); ++i) if (a[i] <= x) brute_sum += a[i];
         assert(sum(root, x) == brute_sum);
@@ -149,7 +162,7 @@ void test_inserting_many_equal_elements() {
     }
     int depth = get_depth(new_tree);
     int perfect_depth = ceil(log2(n));
-    
+
     D(depth);
     D(perfect_depth);
     int difference = depth - perfect_depth;
@@ -162,7 +175,7 @@ int main(){
     int seed = time(NULL);
     printf("Random seed = %d\n", seed);
     srand(seed);
-    
+
     root = null;
     for (int i = 0; i < 3000; ++i) {
         a.push_back(rand());
@@ -172,6 +185,8 @@ int main(){
     test_insert();
     test_erase();
     test_find();
+    test_find_kth();
+    test_sum();
     test_inserting_many_equal_elements();
     printf("Everything OK (random seed = %d).\n", seed);
     return 0;

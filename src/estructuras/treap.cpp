@@ -81,6 +81,21 @@ Node* find(Node* cur, int x) {
     return cur;
 }
 
+Node* find_kth(Node* cur, int k) {
+  while (cur != null and k >= 0) {
+    if (cur->l && cur->l->size > k) {
+      cur = cur->l;
+      continue;
+    }
+    if (cur->l)
+      k -= cur->l->size;
+    if (k == 0) return cur;
+    k--;
+    cur = cur->r;
+  }
+  return cur;
+}
+
 long long sum(Node* p, int x) { // find the sum of elements <= x
     if (p == null) return 0LL;
     if (p->x > x) return sum(p->l, x);
